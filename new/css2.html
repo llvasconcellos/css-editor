@@ -1,0 +1,1661 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0033)http://www.fun-house.kit.net/css/ -->
+<%@LANGUAGE="vbscript"%><%
+local = server.URLEncode(replace(replace(request.ServerVariables("PATH_TRANSLATED"),"\css.asp",""),request.ServerVariables("APPL_PHYSICAL_PATH"),""))
+%><HTML><HEAD><TITLE>Edição de Atributos CSS</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=windows-1252">
+<SCRIPT language=JavaScript type=text/javascript>
+			var i = 0;
+			var id;
+			var ultimo = '1';
+			var div_filtro="";
+			
+			function tab(div, objeto){
+				eval("div" + ultimo + ".style.visibility = \'hidden\';");
+				eval("tab" + ultimo + ".style.backgroundImage = \"url(\'imagens/ababranca.gif\')\"");
+				eval("div" + div + '.style.visibility = \'visible\';');
+				objeto.style.backgroundImage = "url('imagens/abaazul.gif')";
+				ultimo = div;
+				if(div_filtro != ""){
+					eval(div_filtro + ".style.visibility = 'hidden'");
+				}
+				if (div == "7"){
+					if (div_filtro != ""){
+						eval(div_filtro + ".style.visibility = 'visible'");
+					}
+				}
+			}
+		</SCRIPT>
+
+<STYLE type=text/css>.Label {
+	FONT-SIZE: 13px; FILTER: Alpha(Opacity=50); BACKGROUND-IMAGE: url(imagens/ababranca.gif); CURSOR: pointer; COLOR: #000000; BACKGROUND-REPEAT: no-repeat; FONT-FAMILY: Arial
+}
+BODY {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px; BACKGROUND-COLOR: white
+}
+.label2 {
+	FONT-WEIGHT: bold; FONT-SIZE: 12px; COLOR: #4a93ec; FONT-FAMILY: Arial, Helvetica, sans-serif; TEXT-ALIGN: right
+}
+.label3 {
+	FONT-WEIGHT: bold; FONT-SIZE: 12px; COLOR: #4a93ec; FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+.conteudo {
+	BACKGROUND-COLOR: transparent
+}
+.popup {
+	BORDER-RIGHT: #0f5ebf 1px solid; BORDER-TOP: #0f5ebf 1px solid; FONT-SIZE: 12px; BORDER-LEFT: #0f5ebf 1px solid; COLOR: #666666; BORDER-BOTTOM: #0f5ebf 1px solid; FONT-FAMILY: Arial, Helvetica, sans-serif; HEIGHT: 20px; BACKGROUND-COLOR: #e2ffff; outline: red solid thin
+}
+.campo {
+	BORDER-RIGHT: #0f5ebf 1px solid; BORDER-TOP: #0f5ebf 1px solid; FONT-SIZE: 12px; FILTER: progid:DXImageTransform.Microsoft.Gradient(gradientType=1,startColorStr=#AAFFFF,endColorStr=#FFFFFF); BORDER-LEFT: #0f5ebf 1px solid; COLOR: #666666; BORDER-BOTTOM: #0f5ebf 1px solid; FONT-FAMILY: Arial, Helvetica, sans-serif; HEIGHT: 20px
+}
+.texto {
+	FONT-SIZE: 10px; COLOR: #666666; FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+</STYLE>
+
+<META content="MSHTML 6.00.2800.1106" name=GENERATOR></HEAD>
+<BODY scroll=no>
+<FORM name=css>
+<TABLE style="Z-INDEX: 10; LEFT: 0px; WIDTH: 100%; POSITION: absolute; TOP: 0px" 
+cellSpacing=0 cols=9>
+  <TBODY>
+  <TR>
+    <TD></TD>
+    <TD id=tab1 onmouseover="this.style.filter = 'Alpha(Opacity=100)';" 
+    style="FONT-SIZE: 13px; FILTER: Alpha(Opacity=50); BACKGROUND-IMAGE: url(imagens/abaazul.gif); CURSOR: pointer; COLOR: #000000; BACKGROUND-REPEAT: no-repeat; FONT-FAMILY: Arial" 
+    onclick="tab('1', this);" 
+    onmouseout="this.style.filter = 'Alpha(Opacity=50)';" align=middle width=99 
+    height=27><B>Texto</B></TD>
+    <TD class=Label id=tab2 
+    onmouseover="this.style.filter = 'Alpha(Opacity=100)';" 
+    onclick="tab('2', this);" 
+    onmouseout="this.style.filter = 'Alpha(Opacity=50)';" align=middle 
+      width=99><B>Fundo</B></TD>
+    <TD class=Label id=tab3 
+    onmouseover="this.style.filter = 'Alpha(Opacity=100)';" 
+    onclick="tab('3', this);" 
+    onmouseout="this.style.filter = 'Alpha(Opacity=50)';" align=middle 
+      width=99><B>Borda</B></TD>
+    <TD class=Label id=tab4 
+    onmouseover="this.style.filter = 'Alpha(Opacity=100)';" 
+    onclick="tab('4', this);" 
+    onmouseout="this.style.filter = 'Alpha(Opacity=50)';" align=middle 
+      width=99><B>Alinhamento</B></TD>
+    <TD class=Label id=tab5 
+    onmouseover="this.style.filter = 'Alpha(Opacity=100)';" 
+    onclick="tab('5', this);" 
+    onmouseout="this.style.filter = 'Alpha(Opacity=50)';" align=middle 
+      width=99><B>Margens</B></TD>
+    <TD class=Label id=tab6 
+    onmouseover="this.style.filter = 'Alpha(Opacity=100)';" 
+    onclick="tab('6', this);" 
+    onmouseout="this.style.filter = 'Alpha(Opacity=50)';" align=middle 
+      width=99><B>Posição</B></TD>
+    <TD class=Label id=tab7 
+    onmouseover="this.style.filter = 'Alpha(Opacity=100)';" 
+    onclick="tab('7', this);" 
+    onmouseout="this.style.filter = 'Alpha(Opacity=50)';" align=middle 
+      width=99><B>Outros</B></TD>
+    <TD></TD></TR>
+  <TR>
+    <TD style="BACKGROUND-IMAGE: url(imagens/linhaazul.gif)" colSpan=9 
+    height=18></TD></TR></TBODY></TABLE>
+<TABLE style="POSITION: absolute; TOP: 3px" height="100%" cellSpacing=0 cols=3 
+cellPadding=0 width="100%" border=0>
+  <TBODY>
+  <TR>
+    <TD 
+    style="BACKGROUND-POSITION: left top; BACKGROUND-ATTACHMENT: fixed; BACKGROUND-REPEAT: no-repeat; HEIGHT: 24px" 
+    width=24></TD>
+    <TD 
+    style="BACKGROUND-POSITION: left top; BACKGROUND-ATTACHMENT: fixed; BACKGROUND-REPEAT: repeat-x" 
+    width="100%"></TD>
+    <TD width=24></TD></TR>
+  <TR height="100%">
+    <TD 
+    background="Edição de Atributos CSS_arquivos/borda_lateral_esquerda.gif"></TD>
+    <TD 
+    style="FILTER: progid:DXImageTransform.Microsoft.Gradient(gradientType=1,startColorStr=#FFFFFF,endColorStr=#F5FFFF)"></TD>
+    <TD 
+    background="Edição de Atributos CSS_arquivos/borda_lateral_direita.gif"></TD></TR>
+  <TR>
+    <TD width=24 
+    background="Edição de Atributos CSS_arquivos/canto_inferior_esquerdo.gif" 
+    height=26></TD>
+    <TD background="Edição de Atributos CSS_arquivos/borda_inferior.gif" 
+    height=26></TD>
+    <TD width=24 
+    background="Edição de Atributos CSS_arquivos/canto_inferior_direito.gif" 
+    height=26></TD></TR></TBODY></TABLE>
+<DIV class=conteudo id=div1 
+style="LEFT: 4%; WIDTH: 91%; POSITION: absolute; TOP: 13%">
+<TABLE cellPadding=0 width="70%">
+  <TBODY>
+  <TR>
+    <TD class=label2 style="WIDTH: 30%">Fontes</TD>
+    <TD style="WIDTH: 70%">
+      <TABLE style="WIDTH: 100%">
+        <TBODY>
+        <TR>
+          <TD><SELECT class=popup style="WIDTH: 100%" 
+            onchange="teste.style.fontFamily = this.value;"> <OPTION value="" 
+              selected></OPTION> <OPTION 
+              value="Arial, Helvetica, sans-serif">Arial, Helvetica, 
+              sans-serif</OPTION> <OPTION 
+              value="Times New Roman, Times, serif">Times New Roman, Times, 
+              serif</OPTION> <OPTION value="Courier New, Courier, mono">Courier 
+              New, Courier, mono</OPTION> <OPTION 
+              value="Georgia, Times New Roman, Times, serif">Georgia, Times New 
+              Roman, Times, serif</OPTION> <OPTION 
+              value="Verdana, Arial, Helvetica, sans-serif">Verdana, Arial, 
+              Helvetica, sans-serif</OPTION> <OPTION 
+              value="Geneva, Arial, Helvetica, sans-serif">Geneva, Arial, 
+              Helvetica, sans-serif</OPTION></SELECT> </TD></TR></TBODY></TABLE></TD></TR>
+  <TR>
+    <TD class=label2>Tamanho</TD>
+    <TD>
+      <TABLE style="WIDTH: 100%">
+        <TBODY>
+        <TR>
+          <TD style="WIDTH: 33%"><SELECT class=popup id=fontsize 
+            style="WIDTH: 100%" 
+            onchange="eval(this.value); fsizetxt.value=''; fontsizetype.selectedIndex = 0;"> 
+              <OPTION value="teste.style.fontSize=''" selected></OPTION> <OPTION 
+              value="teste.style.fontSize='8'">8</OPTION> <OPTION 
+              value="teste.style.fontSize='9'">9</OPTION> <OPTION 
+              value="teste.style.fontSize='10'">10</OPTION> <OPTION 
+              value="teste.style.fontSize='12'">12</OPTION> <OPTION 
+              value="teste.style.fontSize='14'">14</OPTION> <OPTION 
+              value="teste.style.fontSize='16'">16</OPTION> <OPTION 
+              value="teste.style.fontSize='18'">18</OPTION> <OPTION 
+              value="teste.style.fontSize='24'">24</OPTION> <OPTION 
+              value="teste.style.fontSize='36'">36</OPTION> <OPTION 
+              value="teste.style.fontSize='xx-small'">xx-small</OPTION> <OPTION 
+              value="teste.style.fontSize='x-small'">x-small</OPTION> <OPTION 
+              value="teste.style.fontSize='small'">small</OPTION> <OPTION 
+              value="teste.style.fontSize='medium'">medium</OPTION> <OPTION 
+              value="teste.style.fontSize='large'">large</OPTION> <OPTION 
+              value="teste.style.fontSize='x-large'">x-large</OPTION> <OPTION 
+              value="teste.style.fontSize='xx-large'">xx-large</OPTION> <OPTION 
+              value="teste.style.fontSize='smaller'">smaller</OPTION> <OPTION 
+              value="teste.style.fontSize='larger'">larger</OPTION></SELECT> </TD>
+          <TD style="WIDTH: 33%"><INPUT class=campo id=fsizetxt 
+            onkeydown="if (css.fontsizetype.value == '') css.fontsizetype.selectedIndex = 1; if (css.fontsize.selectedIndex != 0) css.fontsize.selectedIndex = 0;" 
+            onblur="if (this.value != ''){ &#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;eval('teste.style.fontSize=' + '\'' + this.value + css.fontsizetype.value + '\''); &#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;}&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;else { &#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;teste.style.fontSize = '';&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;fontsizetype.selectedIndex = 0;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;}" 
+            style="WIDTH: 100%"> </TD>
+          <TD style="WIDTH: 33%"><SELECT class=popup style="WIDTH: 100%" 
+            onchange="if (fsizetxt.value != '') eval('teste.style.fontSize=' + '\'' + fsizetxt.value + this.value + '\'');" 
+            name=fontsizetype> <OPTION value="" selected></OPTION> <OPTION 
+              value=px>Pixels</OPTION> <OPTION value=pt>Pontos</OPTION> <OPTION 
+              value=in>Poleg.</OPTION> <OPTION value=cm>Cm</OPTION> <OPTION 
+              value=mm>MM</OPTION> <OPTION value=pc>Picas</OPTION> <OPTION 
+              value=em>EMS</OPTION> <OPTION value=ex>EXS</OPTION> <OPTION 
+              value=%>%</OPTION></SELECT> </TD></TR></TBODY></TABLE></TD></TR>
+  <TR>
+    <TD class=label2>Estilo</TD>
+    <TD>
+      <TABLE style="WIDTH: 100%">
+        <TBODY>
+        <TR>
+          <TD><SELECT class=popup style="WIDTH: 100%" 
+            onchange=eval(this.value);> <OPTION 
+              value="teste.style.fontStyle=''" selected></OPTION> <OPTION 
+              value="teste.style.fontStyle='normal'">Normal</OPTION> <OPTION 
+              value="teste.style.fontStyle='italic'">Itálico</OPTION> <OPTION 
+              value="teste.style.fontStyle='oblique'">Oblíquo</OPTION></SELECT> 
+        </TD></TR></TBODY></TABLE></TD></TR>
+  <TR>
+    <TD class=label2>Espaço entre Linhas</TD>
+    <TD>
+      <TABLE style="WIDTH: 100%">
+        <TBODY>
+        <TR>
+          <TD style="WIDTH: 60%"><INPUT class=campo id=lh 
+            onkeydown="if (lhpopup.selectedIndex == 0) lhpopup.selectedIndex = 1;" 
+            onblur="if (this.value != '') teste.style.lineHeight = this.value + lhpopup.value; else lhpopup.selectedIndex = 0;" 
+            style="WIDTH: 100%"> </TD>
+          <TD style="WIDTH: 40%"><SELECT class=popup id=lhpopup 
+            style="WIDTH: 100%" 
+            onchange="if (lh.value != '') teste.style.lineHeight = lh.value + this.value;" 
+            name=lhpopup> <OPTION value="" selected></OPTION> <OPTION 
+              value=px>Pixels</OPTION> <OPTION value=pt>Pontos</OPTION> <OPTION 
+              value=in>Poleg.</OPTION> <OPTION value=cm>Cm</OPTION> <OPTION 
+              value=mm>MM</OPTION> <OPTION value=pc>Picas</OPTION> <OPTION 
+              value=em>EMS</OPTION> <OPTION value=ex>EXS</OPTION> <OPTION 
+              value=%>%</OPTION></SELECT> </TD></TR></TBODY></TABLE></TD></TR>
+  <TR>
+    <TD class=label2>Decoração</TD>
+    <TD>
+      <TABLE style="WIDTH: 100%">
+        <TBODY>
+        <TR>
+          <TD class=texto align=right>Sublinhado</TD>
+          <TD align=right><INPUT id=sublinhado 
+            onclick="txtdecor.checked = false; if (this.checked) teste.style.textDecorationUnderline = true; else teste.style.textDecorationUnderline = false;" 
+            type=checkbox></TD>
+          <TD class=texto align=right>Sobrelinhado</TD>
+          <TD align=right><INPUT id=sobrelinhado 
+            onclick="txtdecor.checked = false; if (this.checked) teste.style.textDecorationOverline = true; else teste.style.textDecorationOverline = false;" 
+            type=checkbox></TD></TR>
+        <TR>
+          <TD class=texto align=right>Riscado</TD>
+          <TD align=right><INPUT id=riscado 
+            onclick="txtdecor.checked = false; if (this.checked) teste.style.textDecorationLineThrough = true; else teste.style.textDecorationLineThrough = false;" 
+            type=checkbox></TD>
+          <TD class=texto align=right>Piscar (Netscape)</TD>
+          <TD align=right><INPUT id=piscar 
+            onclick="txtdecor.checked = false; if (this.checked) teste.style.textDecorationBlink = true; else teste.style.textDecorationBlink = false;" 
+            type=checkbox></TD></TR>
+        <TR>
+          <TD class=texto align=right>Sem</TD>
+          <TD align=right><INPUT id=txtdecor 
+            onclick="if (this.checked) { teste.style.textDecorationNone = true; css.riscado.checked = false; css.piscar.checked = false; css.sublinhado.checked = false; css.sobrelinhado.checked = false;} else teste.style.textDecorationNone = false;" 
+            type=checkbox></TD></TR></TBODY></TABLE></TD></TR>
+  <TR>
+    <TD class=label2>Negrito</TD>
+    <TD>
+      <TABLE style="WIDTH: 100%">
+        <TBODY>
+        <TR>
+          <TD><SELECT class=popup style="WIDTH: 100%" 
+            onchange=eval(this.value);> <OPTION 
+              value="teste.style.fontWeight=''" selected></OPTION> <OPTION 
+              value="teste.style.fontWeight='normal'">Normal</OPTION> <OPTION 
+              value="teste.style.fontWeight='bold'">Negrito</OPTION> <OPTION 
+              value="teste.style.fontWeight='bolder'">Super Negrito</OPTION> 
+              <OPTION value="teste.style.fontWeight='Lighter'">Light</OPTION> 
+              <OPTION value="teste.style.fontWeight='100'">100</OPTION> <OPTION 
+              value="teste.style.fontWeight='200'">200</OPTION> <OPTION 
+              value="teste.style.fontWeight='300'">300</OPTION> <OPTION 
+              value="teste.style.fontWeight='400'">400</OPTION> <OPTION 
+              value="teste.style.fontWeight='500'">500</OPTION> <OPTION 
+              value="teste.style.fontWeight='600'">600</OPTION> <OPTION 
+              value="teste.style.fontWeight='700'">700</OPTION> <OPTION 
+              value="teste.style.fontWeight='800'">800</OPTION> <OPTION 
+              value="teste.style.fontWeight='900'">900</OPTION></SELECT> 
+        </TD></TR></TBODY></TABLE></TD></TR>
+  <TR>
+    <TD class=label2>Variação</TD>
+    <TD>
+      <TABLE style="WIDTH: 100%">
+        <TBODY>
+        <TR>
+          <TD><SELECT class=popup style="WIDTH: 100%" 
+            onchange=eval(this.value);> <OPTION 
+              value="teste.style.fontVariant=''" selected></OPTION> <OPTION 
+              value="teste.style.fontVariant='normal'">Normal</OPTION> <OPTION 
+              value="teste.style.fontVariant='small-caps'">Maiúculas 
+              Pequenas</OPTION></SELECT> </TD></TR></TBODY></TABLE></TD></TR>
+  <TR>
+    <TD class=label2>Transformação</TD>
+    <TD>
+      <TABLE style="WIDTH: 100%">
+        <TBODY>
+        <TR>
+          <TD><SELECT class=popup style="WIDTH: 100%" 
+            onchange=eval(this.value);> <OPTION 
+              value="teste.style.textTransform=''" selected></OPTION> <OPTION 
+              value="teste.style.textTransform='capitalize'">Capitalize</OPTION> 
+              <OPTION 
+              value="teste.style.textTransform='uppercase'">Maiúculas</OPTION> 
+              <OPTION 
+              value="teste.style.textTransform='lowercase'">Minúsculas</OPTION></SELECT> 
+          </TD></TR></TBODY></TABLE></TD></TR>
+  <TR>
+    <TD class=label2>Cor</TD>
+    <TD>
+      <TABLE style="WIDTH: 100%">
+        <TBODY>
+        <TR>
+          <TD style="WIDTH: 88%"><INPUT class=campo 
+            onblur="javascript: teste.style.color = this.value;" 
+            style="WIDTH: 100%" name=colortxt></TD>
+          <TD style="WIDTH: 12%"><IMG style="CURSOR: pointer" 
+            onclick="javascript: selecionacor('txt');" 
+            src="Edição de Atributos CSS_arquivos/cores.gif"></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></DIV>
+<DIV class=conteudo id=div2 
+style="LEFT: 4%; VISIBILITY: hidden; WIDTH: 91%; POSITION: absolute; TOP: 13%">
+<TABLE cellPadding=0 width="70%" bor>
+  <TBODY>
+  <TR>
+    <TD class=label2 width="25%">Cor</TD>
+    <TD width="75%">
+      <TABLE style="WIDTH: 100%">
+        <TBODY>
+        <TR>
+          <TD style="WIDTH: 80%"><INPUT class=campo 
+            onblur="javascript: teste.style.backgroundColor = this.value;" 
+            style="WIDTH: 100%" name=colornum></TD>
+          <TD style="WIDTH: 20%"><IMG style="CURSOR: pointer" 
+            onclick="javascript: selecionacor('bg');" 
+            src="Edição de Atributos CSS_arquivos/cores2.gif"></TD></TR></TBODY></TABLE></TD></TR>
+  <TR>
+    <TD class=label2>Imagem</TD>
+    <TD>
+      <TABLE style="WIDTH: 100%">
+        <TBODY>
+        <TR>
+          <TD style="WIDTH: 80%"><INPUT class=campo id=imgpath 
+            onblur="javascript: teste.style.backgroundImage = 'url(\'' + this.value + '\)';" 
+            style="WIDTH: 100%" name=imgpath></TD>
+          <TD style="WIDTH: 20%"><IMG style="CURSOR: pointer" 
+            onclick="arq(imgpath.form.name + '.' + imgpath.name);" 
+            src="Edição de Atributos CSS_arquivos/procurar.gif"></TD></TR></TBODY></TABLE></TD></TR>
+  <TR>
+    <TD class=label2>Repetição</TD>
+    <TD>
+      <TABLE style="WIDTH: 100%">
+        <TBODY>
+        <TR>
+          <TD><SELECT class=popup style="WIDTH: 100%" 
+            onchange=eval(this.value);> <OPTION 
+              value="teste.style.backgroundRepeat=''" selected></OPTION> <OPTION 
+              value="teste.style.backgroundRepeat='no-repeat'">Sem 
+              Repetição</OPTION> <OPTION 
+              value="teste.style.backgroundRepeat='repeat'">Repetição</OPTION> 
+              <OPTION value="teste.style.backgroundRepeat='repeat-x'">Repetição 
+              na Horizontal</OPTION> <OPTION 
+              value="teste.style.backgroundRepeat='repeat-y'">Repetição na 
+              Vertical</OPTION></SELECT> </TD></TR></TBODY></TABLE></TD></TD></TR>
+  <TR>
+    <TD class=label2>Movimentação</TD>
+    <TD>
+      <TABLE style="WIDTH: 100%">
+        <TBODY>
+        <TR>
+          <TD><SELECT class=popup style="WIDTH: 100%" 
+            onchange=eval(this.value);> <OPTION 
+              value="teste.style.backgroundAttachment=''" selected></OPTION> 
+              <OPTION 
+              value="teste.style.backgroundAttachment='fixed'">Fixo</OPTION> 
+              <OPTION 
+              value="teste.style.backgroundAttachment='scroll'">Rolar</OPTION></SELECT> 
+          </TD></TR></TBODY></TABLE></TD></TR>
+  <TR>
+    <TD class=label2>Posição Horizontal</TD>
+    <TD>
+      <TABLE style="WIDTH: 100%">
+        <TBODY>
+        <TR>
+          <TD style="WIDTH: 33%"><SELECT class=popup id=bgpos1 
+            style="WIDTH: 100%" 
+            onchange="javascript: bgposition1(this.value); bgpos1txt.value=''; bgpos1type.selectedIndex = 0;"> 
+              <OPTION value="" selected></OPTION> <OPTION 
+              value=center>Centralizado</OPTION> <OPTION 
+              value=left>Esquerdo</OPTION> <OPTION 
+            value=right>Direito</OPTION></SELECT> </TD>
+          <TD style="WIDTH: 33%"><INPUT class=campo id=bgpos1txt 
+            onkeydown="if (bgpos1type.selectedIndex == 0) bgpos1type.selectedIndex = 1;" 
+            onblur="if (this.value != ''){&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;bgposition1(this.value + bgpos1type.value); &#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;bgpos1.selectedIndex = 0;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;}&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;else {&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;bgposition1(''); &#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;bgpos1type.selectedIndex = 0;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;}" 
+            style="WIDTH: 100%"> </TD>
+          <TD style="WIDTH: 33%"><SELECT class=popup style="WIDTH: 100%" 
+            onchange="if (bgpos1txt.value != '') bgposition1(bgpos1txt.value + this.value);" 
+            name=bgpos1type> <OPTION value="" selected></OPTION> <OPTION 
+              value=px>Pixels</OPTION> <OPTION value=pt>Pontos</OPTION> <OPTION 
+              value=in>Poleg.</OPTION> <OPTION value=cm>Cm</OPTION> <OPTION 
+              value=mm>MM</OPTION> <OPTION value=pc>Picas</OPTION> <OPTION 
+              value=em>EMS</OPTION> <OPTION value=ex>EXS</OPTION> <OPTION 
+              value=%>%</OPTION></SELECT> </TD></TR></TBODY></TABLE></TD></TR>
+  <TR>
+    <TD class=label2>Posição Vertical</TD>
+    <TD>
+      <TABLE style="WIDTH: 100%">
+        <TBODY>
+        <TR>
+          <TD style="WIDTH: 33%"><SELECT class=popup id=bgpos2 
+            style="WIDTH: 100%" 
+            onchange="javascript: bgposition2(this.value); bgpos2txt.value=''; bgpos2type.selectedIndex = 0;"> 
+              <OPTION value="" selected></OPTION> <OPTION 
+              value=center>Centralizado</OPTION> <OPTION value=top>Topo</OPTION> 
+              <OPTION value=bottom>Em Baixo</OPTION></SELECT> </TD>
+          <TD style="WIDTH: 33%"><INPUT class=campo id=bgpos2txt 
+            onkeydown="if (bgpos2type.selectedIndex == 0) bgpos2type.selectedIndex = 1;" 
+            onblur="if (this.value != ''){&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;bgposition2(this.value + bgpos2type.value); &#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;bgpos2.selectedIndex = 0;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;}&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;else {&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;bgposition2(''); &#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;bgpos2type.selectedIndex = 0;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;}" 
+            style="WIDTH: 100%"> </TD>
+          <TD style="WIDTH: 33%"><SELECT class=popup style="WIDTH: 100%" 
+            onchange="if (bgpos2txt.value != '') bgposition2(bgpos2txt.value + this.value);" 
+            name=bgpos2type> <OPTION value="" selected></OPTION> <OPTION 
+              value=px>Pixels</OPTION> <OPTION value=pt>Pontos</OPTION> <OPTION 
+              value=in>Poleg.</OPTION> <OPTION value=cm>Cm</OPTION> <OPTION 
+              value=mm>MM</OPTION> <OPTION value=pc>Picas</OPTION> <OPTION 
+              value=em>EMS</OPTION> <OPTION value=ex>EXS</OPTION> <OPTION 
+              value=%>%</OPTION></SELECT> 
+</TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></DIV>
+<DIV class=conteudo id=div3 
+style="LEFT: 4%; VISIBILITY: hidden; WIDTH: 91%; POSITION: absolute; TOP: 13%">
+<TABLE cellPadding=2 width="70%">
+  <TBODY>
+  <TR>
+    <TD vAlign=bottom>
+      <TABLE cellPadding=0 width="100%">
+        <TBODY>
+        <TR>
+          <TD class=label3 align=middle colSpan=2>Estilo da Borda</TD></TR>
+        <TR>
+          <TD class=label2 align=middle colSpan=2><INPUT id=brdrstyle 
+            onclick="if (this.checked){&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.bs2.selectedIndex = css.bs1.selectedIndex;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.bs3.selectedIndex = css.bs1.selectedIndex;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.bs4.selectedIndex = css.bs1.selectedIndex;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;teste.style.borderBottomStyle = css.bs1.value;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;teste.style.borderLeftStyle = css.bs1.value;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;teste.style.borderRightStyle = css.bs1.value;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.bs2.disabled = true;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.bs3.disabled = true;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.bs4.disabled = true;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;}&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;else{&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.bs2.disabled = false;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.bs3.disabled = false;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.bs4.disabled = false;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;}" 
+            type=checkbox CHECKED>Igual para todos</TD></TR>
+        <TR>
+          <TD class=label2 align=right width="20%">Superior</TD>
+          <TD width="80%"><SELECT class=popup style="WIDTH: 100%" 
+            onchange="  eval('teste.style.borderTopStyle=' + '\'' + this.value + '\'');&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;if(css.brdrstyle.checked){&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.bs2.selectedIndex = this.selectedIndex;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.bs3.selectedIndex = this.selectedIndex;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.bs4.selectedIndex = this.selectedIndex;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;eval('teste.style.borderBottomStyle=' + '\'' + this.value + '\'');&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;eval('teste.style.borderRightStyle=' + '\'' + this.value + '\'');&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;eval('teste.style.borderLeftStyle=' + '\'' + this.value + '\'');&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;}" 
+            name=bs1> <OPTION value="" selected></OPTION> <OPTION 
+              value=dotted>Pontilhado</OPTION> <OPTION 
+              value=dashed>Tracejado</OPTION> <OPTION 
+              value=solid>Solido</OPTION> <OPTION value=double>Dupla</OPTION> 
+              <OPTION value=groove>GROOVE</OPTION> <OPTION 
+              value=ridge>RIDGE</OPTION> <OPTION value=inset>inset</OPTION> 
+              <OPTION value=outset>outset</OPTION></SELECT> </TD></TR>
+        <TR>
+          <TD class=label2 align=right>Inferior</TD>
+          <TD><SELECT class=popup style="WIDTH: 100%" disabled 
+            onchange="eval('teste.style.borderBottomStyle=' + '\'' + this.value + '\'');" 
+            name=bs2> <OPTION value="" selected></OPTION> <OPTION 
+              value=dotted>Pontilhado</OPTION> <OPTION 
+              value=dashed>Tracejado</OPTION> <OPTION 
+              value=solid>Solido</OPTION> <OPTION value=double>Dupla</OPTION> 
+              <OPTION value=groove>GROOVE</OPTION> <OPTION 
+              value=ridge>RIDGE</OPTION> <OPTION value=inset>inset</OPTION> 
+              <OPTION value=outset>outset</OPTION></SELECT> </TD></TR>
+        <TR>
+          <TD class=label2 align=right>Direito</TD>
+          <TD><SELECT class=popup style="WIDTH: 100%" disabled 
+            onchange="eval('teste.style.borderRightStyle=' + '\'' + this.value + '\'');" 
+            name=bs3> <OPTION value="" selected></OPTION> <OPTION 
+              value=dotted>Pontilhado</OPTION> <OPTION 
+              value=dashed>Tracejado</OPTION> <OPTION 
+              value=solid>Solido</OPTION> <OPTION value=double>Dupla</OPTION> 
+              <OPTION value=groove>GROOVE</OPTION> <OPTION 
+              value=ridge>RIDGE</OPTION> <OPTION value=inset>inset</OPTION> 
+              <OPTION value=outset>outset</OPTION></SELECT> </TD></TR>
+        <TR>
+          <TD class=label2 align=right>Esquerdo</TD>
+          <TD><SELECT class=popup style="WIDTH: 100%" disabled 
+            onchange="eval('teste.style.borderLeftStyle=' + '\'' + this.value + '\'');" 
+            name=bs4> <OPTION value="" selected></OPTION> <OPTION 
+              value=dotted>Pontilhado</OPTION> <OPTION 
+              value=dashed>Tracejado</OPTION> <OPTION 
+              value=solid>Solido</OPTION> <OPTION value=double>Dupla</OPTION> 
+              <OPTION value=groove>GROOVE</OPTION> <OPTION 
+              value=ridge>RIDGE</OPTION> <OPTION value=inset>inset</OPTION> 
+              <OPTION value=outset>outset</OPTION></SELECT> 
+</TD></TR></TBODY></TABLE></TD>
+    <TD>
+      <TABLE cellPadding=0 width="100%">
+        <TBODY>
+        <TR>
+          <TD class=label3 align=middle colSpan=2>Cor da Borda</TD></TR>
+        <TR>
+          <TD class=label2 align=middle colSpan=2><INPUT id=brdrcolor 
+            onclick="if (!checked){&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.brdrcolor2.disabled = false;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.brdrcolor3.disabled = false;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.brdrcolor4.disabled = false;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.brdrcolorbutton2.disabled = false;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.brdrcolorbutton3.disabled = false;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.brdrcolorbutton4.disabled = false;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;}&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;else{&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.brdrcolor2.disabled = true;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.brdrcolor3.disabled = true;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.brdrcolor4.disabled = true;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.brdrcolorbutton2.disabled = true;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.brdrcolorbutton3.disabled = true;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.brdrcolorbutton4.disabled = true;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.brdrcolor2.value = css.brdrcolor1.value;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.brdrcolor3.value = css.brdrcolor1.value;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.brdrcolor4.value = css.brdrcolor1.value;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;teste.style.borderTopColor = css.brdrcolor1.value;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;teste.style.borderBottomColor = css.brdrcolor1.value;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;teste.style.borderRightColor = css.brdrcolor1.value;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;teste.style.borderLeftColor = css.brdrcolor1.value;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;}" 
+            type=checkbox CHECKED name=brdrcolor>Igual para todos</TD></TR>
+        <TR>
+          <TD width="87%"><INPUT class=campo 
+            onblur="javascript: teste.style.borderTopColor = this.value;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;if(css.brdrcolor.checked){&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;teste.style.borderBottomColor = this.value;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;teste.style.borderLeftColor = this.value;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;teste.style.borderRightColor = this.value;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.brdrcolor2.value = this.value;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.brdrcolor3.value = this.value;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.brdrcolor4.value = this.value;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;}" 
+            onkeyup="&#9;if(css.brdrcolor.checked){&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.brdrcolor2.value = this.value;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.brdrcolor3.value = this.value;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.brdrcolor4.value = this.value;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;}" 
+            style="WIDTH: 100%" size=8 name=brdrcolor1></TD>
+          <TD width="13%"><IMG style="CURSOR: pointer" 
+            onclick="javascript: selecionacor('brdrcolor1');" 
+            src="Edição de Atributos CSS_arquivos/cores.gif" 
+            name=brdrcolorbutton1></TD></TR>
+        <TR>
+          <TD><INPUT class=campo 
+            onblur="javascript: teste.style.borderBottomColor = this.value;" 
+            style="WIDTH: 100%" disabled size=8 name=brdrcolor2></TD>
+          <TD><IMG style="CURSOR: pointer" disabled 
+            onclick="javascript: selecionacor('brdrcolor2');" 
+            src="Edição de Atributos CSS_arquivos/cores.gif" 
+            name=brdrcolorbutton2></TD></TR>
+        <TR>
+          <TD><INPUT class=campo 
+            onblur="javascript: teste.style.borderRightColor = this.value;" 
+            style="WIDTH: 100%" disabled size=8 name=brdrcolor3></TD>
+          <TD><IMG style="CURSOR: pointer" disabled 
+            onclick="javascript: selecionacor('brdrcolor3');" 
+            src="Edição de Atributos CSS_arquivos/cores.gif" 
+            name=brdrcolorbutton3></TD></TR>
+        <TR>
+          <TD><INPUT class=campo 
+            onblur="javascript: teste.style.borderLeftColor = this.value;" 
+            style="WIDTH: 100%" disabled size=8 name=brdrcolor4></TD>
+          <TD><IMG style="CURSOR: pointer" disabled 
+            onclick="javascript: selecionacor('brdrcolor4');" 
+            src="Edição de Atributos CSS_arquivos/cores.gif" 
+            name=brdrcolorbutton4></TD></TR></TBODY></TABLE></TD></TR>
+  <TR>
+    <TD colSpan=2>
+      <TABLE cellPadding=0 width="50%">
+        <TBODY>
+        <TR>
+          <TD class=label3 align=middle colSpan=4>Largura da Borda</TD></TR>
+        <TR>
+          <TD class=label2 align=middle colSpan=4><INPUT id=brdrwidth 
+            onclick="if (!checked){ &#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.brdrwidth2.disabled = false;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.brdrwidth3.disabled = false;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.brdrwidth4.disabled = false;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.brbottxt.disabled = false;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.brlefttxt.disabled = false;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.brrighttxt.disabled = false;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.brdbotwdt.disabled = false;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.brdrigwdt.disabled = false;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.brdleftwdt.disabled = false;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;} &#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;else {&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.brdrwidth2.selectedIndex = css.brdrwidth1.selectedIndex;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.brdrwidth3.selectedIndex = css.brdrwidth1.selectedIndex;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.brdrwidth4.selectedIndex = css.brdrwidth1.selectedIndex;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;teste.style.borderBottomWidth = css.brdrwidth1.value;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;teste.style.borderRightWidth = css.brdrwidth1.value;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;teste.style.borderLeftWidth = css.brdrwidth1.value;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.brdrwidth2.disabled = true;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.brdrwidth3.disabled = true;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.brdrwidth4.disabled = true;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.brbottxt.disabled = true;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.brlefttxt.disabled = true;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.brrighttxt.disabled = true;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.brdbotwdt.disabled = true;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.brdrigwdt.disabled = true;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.brdleftwdt.disabled = true;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;if (css.brdrwidth1.value == '' &amp;&amp; css.brtoptxt.value != ''){&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.brbottxt.value = css.brtoptxt.value;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.brrighttxt.value = css.brtoptxt.value;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.brlefttxt.value = css.brtoptxt.value;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.brdbotwdt.selectedIndex = css.brdtopwdt.selectedIndex;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.brdrigwdt.selectedIndex = css.brdtopwdt.selectedIndex;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.brdleftwdt.selectedIndex = css.brdtopwdt.selectedIndex;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;eval('teste.style.borderTopWidth=\'' + brtoptxt.value + brdtopwdt.value + '\'');&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;eval('teste.style.borderBottomWidth=\'' + brtoptxt.value + brdtopwdt.value + '\'');&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;eval('teste.style.borderRightWidth=\'' + brtoptxt.value + brdtopwdt.value + '\'');&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;eval('teste.style.borderLeftWidth=\'' + brtoptxt.value + brdtopwdt.value + '\'');&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;}&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;}" 
+            type=checkbox CHECKED>Igual para todos</TD></TR>
+        <TR>
+          <TD class=label2 align=right width="15%">Superior</TD>
+          <TD width="30%"><SELECT class=popup style="WIDTH: 100%" 
+            onchange="eval('teste.style.borderTopWidth=\'' + this.value + '\'');&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;if (css.brdrwidth.checked){&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.brdrwidth2.selectedIndex = css.brdrwidth1.selectedIndex;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.brdrwidth3.selectedIndex = css.brdrwidth1.selectedIndex;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.brdrwidth4.selectedIndex = css.brdrwidth1.selectedIndex;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;teste.style.borderBottomWidth = css.brdrwidth1.value;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;teste.style.borderRightWidth = css.brdrwidth1.value;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;teste.style.borderLeftWidth = css.brdrwidth1.value;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;}&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;if (this.value != ''){&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.brtoptxt.disabled = true;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.brbottxt.disabled = true;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.brrighttxt.disabled = true;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.brlefttxt.disabled = true;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.brtoptxt.value = '';&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.brbottxt.value = '';&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.brrighttxt.value = '';&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.brlefttxt.value = '';&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.brdtopwdt.selectedIndex = 0;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.brdbotwdt.selectedIndex = 0;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.brdrigwdt.selectedIndex = 0;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.brdleftwdt.selectedIndex = 0;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;}&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;if (this.value == ''){&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.brtoptxt.disabled = false;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;if (!css.brdrwidth.checked){&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.brbottxt.disabled = false;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.brrighttxt.disabled = false;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.brlefttxt.disabled = false;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.brdbotwdt.disabled = false;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.brdrigwdt.disabled = false;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.brdleftwdt.disabled = false;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;}&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;}&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;" 
+            name=brdrwidth1> <OPTION value="" selected></OPTION> <OPTION 
+              value=thin>Fino</OPTION> <OPTION value=medium>Médio</OPTION> 
+              <OPTION value=thick>Grosso</OPTION></SELECT> </TD>
+          <TD width="30%"><INPUT class=campo 
+            onkeydown="brdtopwdt.selectedIndex = 1;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;  if (css.brdrwidth.checked){&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.brdbotwdt.selectedIndex = 1;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.brdrigwdt.selectedIndex = 1;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.brdleftwdt.selectedIndex = 1;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;   }" 
+            onblur="if (this.value != '') {&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9; &#9;&#9;&#9;eval('teste.style.borderTopWidth=\'' + this.value + brdtopwdt.value + '\'');&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;if (css.brdrwidth.checked){&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;eval('teste.style.borderBottomWidth=\'' + this.value + brdtopwdt.value + '\'');&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;eval('teste.style.borderRightWidth=\'' + this.value + brdtopwdt.value + '\'');&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;eval('teste.style.borderLeftWidth=\'' + this.value + brdtopwdt.value + '\'');&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;}&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;}&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;else {&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;brdtopwdt.selectedIndex = 0;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;if (css.brdrwidth.checked){&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.brdbotwdt.selectedIndex = 0;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.brdrigwdt.selectedIndex = 0;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.brdleftwdt.selectedIndex = 0;&#9;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;}&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;}" 
+            onkeyup="if (css.brdrwidth.checked){&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.brbottxt.value = this.value;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.brrighttxt.value = this.value;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.brlefttxt.value = this.value;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;}" 
+            style="WIDTH: 100%" size=3 name=brtoptxt> </TD>
+          <TD width="25%"><SELECT class=popup style="WIDTH: 100%" 
+            onchange="if (css.brtoptxt.value != ''){&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;eval('teste.style.borderTopWidth=\'' + css.brtoptxt.value + this.value + '\'');&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;if (css.brdrwidth.checked){&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.brdbotwdt.selectedIndex = css.brdtopwdt.selectedIndex;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.brdrigwdt.selectedIndex = css.brdtopwdt.selectedIndex;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.brdleftwdt.selectedIndex = css.brdtopwdt.selectedIndex;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;eval('teste.style.borderBottomWidth=\'' + css.brtoptxt.value + brdbotwdt.value + '\'');&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;eval('teste.style.borderRightWidth=\'' + css.brtoptxt.value + brdrigwdt.value + '\'');&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;eval('teste.style.borderLeftWidth=\'' + css.brtoptxt.value + brdleftwdt.value + '\'');&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;}&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;}&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;else {&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;if (css.brdrwidth.checked){&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.brdbotwdt.selectedIndex = css.brdtopwdt.selectedIndex;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.brdrigwdt.selectedIndex = css.brdtopwdt.selectedIndex;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.brdleftwdt.selectedIndex = css.brdtopwdt.selectedIndex;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;}&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;}" 
+            name=brdtopwdt> <OPTION value="" selected></OPTION> <OPTION 
+              value=px>Pixels</OPTION> <OPTION value=pt>Pontos</OPTION> <OPTION 
+              value=in>Poleg.</OPTION> <OPTION value=cm>Cm</OPTION> <OPTION 
+              value=mm>MM</OPTION> <OPTION value=pc>Picas</OPTION> <OPTION 
+              value=em>EMS</OPTION> <OPTION value=ex>EXS</OPTION></SELECT> </TD></TR>
+        <TR>
+          <TD class=label2 align=right>Inferior</TD>
+          <TD><SELECT class=popup style="WIDTH: 100%" disabled 
+            onchange="eval('teste.style.borderBottomWidth=\'' + this.value + '\'');" 
+            name=brdrwidth2> <OPTION value="" selected></OPTION> <OPTION 
+              value=thin>Fino</OPTION> <OPTION value=medium>Médio</OPTION> 
+              <OPTION value=thick>Grosso</OPTION></SELECT> </TD>
+          <TD><INPUT class=campo 
+            onkeydown="if (brdbotwdt.selectedIndex == 0) brdbotwdt.selectedIndex = 1;" 
+            onblur="eval('teste.style.borderBottomWidth=\'' + this.value + brdbotwdt.value + '\'');" 
+            style="WIDTH: 100%" disabled size=3 name=brbottxt> </TD>
+          <TD><SELECT class=popup style="WIDTH: 100%" disabled 
+            onchange="if (brbottxt.value != ''){&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9; &#9;eval('teste.style.borderBottomWidth=\'' + brbottxt.value + this.value + '\'');&#9;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9; }" 
+            name=brdbotwdt> <OPTION value="" selected></OPTION> <OPTION 
+              value=px>Pixels</OPTION> <OPTION value=pt>Pontos</OPTION> <OPTION 
+              value=in>Poleg.</OPTION> <OPTION value=cm>Cm</OPTION> <OPTION 
+              value=mm>MM</OPTION> <OPTION value=pc>Picas</OPTION> <OPTION 
+              value=em>EMS</OPTION> <OPTION value=ex>EXS</OPTION></SELECT> </TD></TR>
+        <TR>
+          <TD class=label2 align=right>Direito</TD>
+          <TD><SELECT class=popup style="WIDTH: 100%" disabled 
+            onchange="eval('teste.style.borderRightWidth=\'' + this.value + '\'');" 
+            name=brdrwidth3> <OPTION value="" selected></OPTION> <OPTION 
+              value=thin>Fino</OPTION> <OPTION value=medium>Médio</OPTION> 
+              <OPTION value=thick>Grosso</OPTION></SELECT> </TD>
+          <TD><INPUT class=campo 
+            onkeydown="if (brdrigwdt.selectedIndex == 0) brdrigwdt.selectedIndex = 1;" 
+            onblur="teste.style.borderRightWidth = this.value + brdrigwdt.value;" 
+            style="WIDTH: 100%" disabled size=3 name=brrighttxt> </TD>
+          <TD><SELECT class=popup style="WIDTH: 100%" disabled 
+            onchange="if (brrighttxt.value != '') teste.style.borderRightWidth = brrighttxt.value + this.value;" 
+            name=brdrigwdt> <OPTION value="" selected></OPTION> <OPTION 
+              value=px>Pixels</OPTION> <OPTION value=pt>Pontos</OPTION> <OPTION 
+              value=in>Poleg.</OPTION> <OPTION value=cm>Cm</OPTION> <OPTION 
+              value=mm>MM</OPTION> <OPTION value=pc>Picas</OPTION> <OPTION 
+              value=em>EMS</OPTION> <OPTION value=ex>EXS</OPTION></SELECT> </TD></TR>
+        <TR>
+          <TD class=label2 align=right>Esquerdo</TD>
+          <TD><SELECT class=popup style="WIDTH: 100%" disabled 
+            onchange="eval('teste.style.borderLeftWidth=\'' + this.value + '\'');" 
+            name=brdrwidth4> <OPTION value="" selected></OPTION> <OPTION 
+              value=thin>Fino</OPTION> <OPTION value=medium>Médio</OPTION> 
+              <OPTION value=thick>Grosso</OPTION></SELECT> </TD>
+          <TD><INPUT class=campo 
+            onkeydown="if (brdleftwdt.selectedIndex == 0) brdleftwdt.selectedIndex = 1;" 
+            onblur="teste.style.borderLeftWidth = this.value + brdleftwdt.value;" 
+            style="WIDTH: 100%" disabled size=3 name=brlefttxt> </TD>
+          <TD><SELECT class=popup style="WIDTH: 100%" disabled 
+            onchange="if (brlefttxt.value != '') teste.style.borderRightWidth = brlefttxt.value + this.value;" 
+            name=brdleftwdt> <OPTION value="" selected></OPTION> <OPTION 
+              value=px>Pixels</OPTION> <OPTION value=pt>Pontos</OPTION> <OPTION 
+              value=in>Poleg.</OPTION> <OPTION value=cm>Cm</OPTION> <OPTION 
+              value=mm>MM</OPTION> <OPTION value=pc>Picas</OPTION> <OPTION 
+              value=em>EMS</OPTION> <OPTION value=ex>EXS</OPTION></SELECT> 
+        </TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></DIV>
+<DIV class=conteudo id=div4 
+style="LEFT: 4%; VISIBILITY: hidden; WIDTH: 91%; POSITION: absolute; TOP: 13%">
+<TABLE cellPadding=0 width="70%">
+  <TBODY>
+  <TR>
+    <TD class=label2 width="25%">Alinhamento Vertical</TD>
+    <TD width="25%"><SELECT class=popup style="WIDTH: 100%" 
+      onchange="eval('teste.style.verticalAlign=' + '\'' + this.value + '\'');&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;if (this.value != ''){&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.vrtaligntxt.value = '';&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.vlva.selectedIndex = 0;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.vrtaligntxt.disabled = true;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.vlva.disabled = true;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;}&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;else{&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.vrtaligntxt.disabled = false;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.vlva.disabled = false;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;}" 
+      name=va> <OPTION value="" selected></OPTION> <OPTION 
+        value=baseline>Linha Base</OPTION> <OPTION value=sub>Sub</OPTION> 
+        <OPTION value=super>Super</OPTION> <OPTION value=top>Superior</OPTION> 
+        <OPTION value=texttop>Alinhado c/ Texto Acima</OPTION> <OPTION 
+        value=middle>Meio</OPTION> <OPTION value=bottom>Em Baixo</OPTION> 
+        <OPTION value=textbottom>Alinhado c/ Texto Abaixo</OPTION></SELECT> </TD>
+    <TD width="25%"><INPUT class=campo id=vrtaligntxt 
+      onblur="if (this.value != ''){&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;eval('teste.style.verticalAlign=' + '\'' + this.value + css.vlva.value + '\'');&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.va.selectedIndex = 0;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.va.disabled = true;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;}&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;else{&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.va.disabled = false;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;}" 
+      style="WIDTH: 100%"> </TD>
+    <TD width="25%"><SELECT class=popup style="WIDTH: 100%" 
+      onchange="eval('teste.style.verticalAlign=' + '\'' + vrtaligntxt.value + this.value + '\'');" 
+      name=vlva> <OPTION value="" selected></OPTION> <OPTION 
+        value=px>Pixels</OPTION> <OPTION value=pt>Pontos</OPTION> <OPTION 
+        value=in>Poleg.</OPTION> <OPTION value=cm>Cm</OPTION> <OPTION 
+        value=mm>MM</OPTION> <OPTION value=pc>Picas</OPTION> <OPTION 
+        value=em>EMS</OPTION> <OPTION value=ex>EXS</OPTION> <OPTION 
+        value=%>%</OPTION></SELECT> </TD></TR>
+  <TR>
+    <TD class=label2>Alinhamento Texto</TD>
+    <TD colSpan=3><SELECT class=popup style="WIDTH: 100%" 
+      onchange=eval(this.value);> <OPTION value="teste.style.textAlign=''" 
+        selected></OPTION> <OPTION 
+        value="teste.style.textAlign='left'">Esquerda</OPTION> <OPTION 
+        value="teste.style.textAlign='right'">Direita</OPTION> <OPTION 
+        value="teste.style.textAlign='center'">Centralizado</OPTION> <OPTION 
+        value="teste.style.textAlign='justify'">Justificado</OPTION></SELECT> 
+  </TD></TR>
+  <TR>
+    <TD class=label2 style="FONT-SIZE: 10px">Espaço entre Palavras</TD>
+    <TD><SELECT class=popup style="WIDTH: 100%" 
+      onchange="eval('teste.style.wordSpacing=' + '\'' + this.value + '\'');&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;if (this.value != ''){&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.wstxt.value = '';&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.vlws.selectedIndex = 0;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.wstxt.disabled = true;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.vlws.disabled = true;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;}&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;else{&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.wstxt.disabled = false;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.vlws.disabled = false;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;}" 
+      name=ws> <OPTION value="" selected></OPTION> <OPTION 
+        value=Normal>Normal</OPTION></SELECT> </TD>
+    <TD><INPUT class=campo id=wstxt 
+      onblur="if (this.value != ''){&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;eval('teste.style.wordSpacing=' + '\'' + this.value + css.vlva.value + '\'');&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.ws.selectedIndex = 0;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.ws.disabled = true;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;}&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;else{&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.ws.disabled = false;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;}" 
+      style="WIDTH: 100%" name=wstxt> </TD>
+    <TD><SELECT class=popup style="WIDTH: 100%" 
+      onchange="eval('teste.style.wordSpacing=' + '\'' + css.wstxt.value + this.value + '\'');" 
+      name=vlws> <OPTION value="" selected></OPTION> <OPTION 
+        value=px>Pixels</OPTION> <OPTION value=pt>Pontos</OPTION> <OPTION 
+        value=in>Poleg.</OPTION> <OPTION value=cm>Cm</OPTION> <OPTION 
+        value=mm>MM</OPTION> <OPTION value=pc>Picas</OPTION> <OPTION 
+        value=em>EMS</OPTION> <OPTION value=ex>EXS</OPTION></SELECT> </TD>
+  <TR>
+    <TD class=label2>Espaço entre Letras</TD>
+    <TD><SELECT class=popup style="WIDTH: 100%" 
+      onchange="eval('teste.style.letterSpacing=' + '\'' + this.value + '\'');&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;if (this.value != ''){&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.lstxt.value = '';&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.vlls.selectedIndex = 0;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.lstxt.disabled = true;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.vlls.disabled = true;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;}&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;else{&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.lstxt.disabled = false;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.vlls.disabled = false;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;}" 
+      name=ls> <OPTION value="" selected></OPTION> <OPTION 
+        value=Normal>Normal</OPTION></SELECT> </TD>
+    <TD><INPUT class=campo id=lstxt 
+      onblur="if (this.value != ''){&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;eval('teste.style.letterSpacing=' + '\'' + this.value + css.vlls.value + '\'');&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.ls.selectedIndex = 0;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.ls.disabled = true;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;}&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;else{&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.ls.disabled = false;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;}" 
+      style="WIDTH: 100%" name=lstxt> </TD>
+    <TD><SELECT class=popup style="WIDTH: 100%" 
+      onchange="eval('teste.style.letterSpacing=' + '\'' + css.lstxt.value + this.value + '\'');" 
+      name=vlls> <OPTION value="" selected></OPTION> <OPTION 
+        value=px>Pixels</OPTION> <OPTION value=pt>Pontos</OPTION> <OPTION 
+        value=in>Poleg.</OPTION> <OPTION value=cm>Cm</OPTION> <OPTION 
+        value=mm>MM</OPTION> <OPTION value=pc>Picas</OPTION> <OPTION 
+        value=em>EMS</OPTION> <OPTION value=ex>EXS</OPTION></SELECT> </TD></TR>
+  <TR>
+    <TD class=label2>Identação do Texto</TD>
+    <TD colSpan=3>
+      <TABLE cellSpacing=0 cellPadding=0 width="100%">
+        <TBODY>
+        <TR>
+          <TD width="50%"><INPUT class=campo 
+            onblur="eval('teste.style.textIndent=' + '\'' + this.value + vlti.value + '\'');" 
+            style="WIDTH: 100%" name=ti></TD>
+          <TD width="50%"><SELECT class=popup style="WIDTH: 100%" 
+            onchange="eval('teste.style.textIndent=' + '\'' + css.ti.value + this.value + '\'');" 
+            name=vlti> <OPTION value="" selected></OPTION> <OPTION 
+              value=px>Pixels</OPTION> <OPTION value=pt>Pontos</OPTION> <OPTION 
+              value=in>Poleg.</OPTION> <OPTION value=cm>Cm</OPTION> <OPTION 
+              value=mm>MM</OPTION> <OPTION value=pc>Picas</OPTION> <OPTION 
+              value=em>EMS</OPTION> <OPTION value=ex>EXS</OPTION> <OPTION 
+              value=%>%</OPTION></SELECT> </TD></TR></TBODY></TABLE></TD></TR>
+  <TR>
+    <TD class=label2>Espaços em Branco</TD>
+    <TD colSpan=3><SELECT class=popup style="WIDTH: 100%" 
+      onchange=eval(this.value);> <OPTION value="teste.style.whiteSpace=''" 
+        selected></OPTION> <OPTION 
+        value="teste.style.whiteSpace='normal'">Ignorado</OPTION> <OPTION 
+        value="teste.style.whiteSpace='pre'">Preservado</OPTION> <OPTION 
+        value="teste.style.whiteSpace='nowrap'">Sem quebra de 
+      linha</OPTION></SELECT> </TD></TR></TBODY></TABLE></DIV>
+<DIV class=conteudo id=div5 
+style="LEFT: 4%; VISIBILITY: hidden; WIDTH: 91%; POSITION: absolute; TOP: 13%">
+<TABLE cellPadding=0 width="70%">
+  <TBODY>
+  <TR>
+    <TD>
+      <TABLE width="100%">
+        <TBODY>
+        <TR>
+          <TD width="50%">
+            <TABLE cellPadding=0 width="100%">
+              <TBODY>
+              <TR>
+                <TD class=label3 align=middle colSpan=3>Espaçamento</TD></TR>
+              <TR>
+                <TD class=label2 colSpan=3><INPUT 
+                  onclick="if (this.checked){&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;if (css.paddingtoptext.value != ''){&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;teste.style.paddingTop = css.paddingtoptext.value + css.paddingtopselect.value;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;teste.style.paddingBottom = css.paddingtoptext.value + css.paddingtopselect.value;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;teste.style.paddingLeft = css.paddingtoptext.value + css.paddingtopselect.value;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;teste.style.paddingRight = css.paddingtoptext.value + css.paddingtopselect.value;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.paddingbottomtext.value = css.paddingtoptext.value;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.paddingrighttext.value = css.paddingtoptext.value;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.paddinglefttext.value = css.paddingtoptext.value;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.paddingbottomtext.disabled = true;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.paddingrighttext.disabled = true;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.paddinglefttext.disabled = true;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.paddingbottomselect.selectedIndex = css.paddingtopselect.selectedIndex;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.paddingrightselect.selectedIndex = css.paddingtopselect.selectedIndex;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.paddingleftselect.selectedIndex = css.paddingtopselect.selectedIndex;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.paddingbottomselect.disabled = true;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.paddingrightselect.disabled = true;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.paddingleftselect.disabled = true;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;}&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;}&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;else{&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.paddingbottomtext.disabled = false;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.paddingrighttext.disabled = false;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.paddinglefttext.disabled = false;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.paddingbottomselect.disabled = false;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.paddingrightselect.disabled = false;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.paddingleftselect.disabled = false;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;}" 
+                  type=checkbox CHECKED name=paddingcheckbox>Igual para 
+              todos</TD></TR>
+              <TR>
+                <TD class=label2 width="15%">Superior</TD>
+                <TD width="41%"><INPUT class=campo 
+                  onkeydown="if (this.value == ''){&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;paddingtopselect.selectedIndex = 1;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;if (paddingcheckbox.checked){&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.paddingbottomselect.selectedIndex = css.paddingtopselect.selectedIndex;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.paddingrightselect.selectedIndex = css.paddingtopselect.selectedIndex;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.paddingleftselect.selectedIndex = css.paddingtopselect.selectedIndex;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;}&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;}" 
+                  onblur="if (this.value != ''){&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;if (paddingcheckbox.checked){&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;teste.style.paddingTop = css.paddingtoptext.value + css.paddingtopselect.value;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;teste.style.paddingBottom = css.paddingtoptext.value + css.paddingtopselect.value;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;teste.style.paddingLeft = css.paddingtoptext.value + css.paddingtopselect.value;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;teste.style.paddingRight = css.paddingtoptext.value + css.paddingtopselect.value;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;}&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;   }&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;   else{&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;   &#9;&#9;css.paddingtopselect.selectedIndex = 0;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;teste.style.paddingTop = '';&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;if (paddingcheckbox.checked){&#9;&#9;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;   css.paddingbottomselect.selectedIndex = 0;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;   css.paddingrightselect.selectedIndex = 0;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;   css.paddingleftselect.selectedIndex = 0;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;teste.style.paddingBottom = '';&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;teste.style.paddingLeft = '';&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;teste.style.paddingRight = '';&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;}&#9;&#9;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;   }" 
+                  onkeyup="if (paddingcheckbox.checked){&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.paddingbottomtext.value = css.paddingtoptext.value;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.paddinglefttext.value = css.paddingtoptext.value;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.paddingrighttext.value = css.paddingtoptext.value;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;}" 
+                  style="WIDTH: 100%" size=3 name=paddingtoptext> </TD>
+                <TD width="33%"><SELECT class=popup style="WIDTH: 100%" 
+                  onchange="&#9;if (this.selectedIndex != 0){&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;if (paddingcheckbox.checked){&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;if (paddingtoptext.value != ''){&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;teste.style.paddingTop = css.paddingtoptext.value + css.paddingtopselect.value;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;teste.style.paddingBottom = css.paddingtoptext.value + css.paddingtopselect.value;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;teste.style.paddingLeft = css.paddingtoptext.value + css.paddingtopselect.value;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;teste.style.paddingRight = css.paddingtoptext.value + css.paddingtopselect.value;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;}&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.paddingbottomselect.selectedIndex = css.paddingtopselect.selectedIndex;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.paddingrightselect.selectedIndex = css.paddingtopselect.selectedIndex;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.paddingleftselect.selectedIndex = css.paddingtopselect.selectedIndex;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;}&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;else {&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;if (paddingtoptext.value != ''){&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;teste.style.paddingTop = css.paddingtoptext.value + css.paddingtopselect.value;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;}&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;}&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;}&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;else{&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;if (paddingcheckbox.checked){&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.paddingbottomselect.selectedIndex = 0;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.paddingrightselect.selectedIndex = 0;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.paddingleftselect.selectedIndex = 0;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;}&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;}" 
+                  name=paddingtopselect> <OPTION value="" selected></OPTION> 
+                    <OPTION value=px>Pixels</OPTION> <OPTION 
+                    value=pt>Pontos</OPTION> <OPTION value=in>Poleg.</OPTION> 
+                    <OPTION value=cm>Cm</OPTION> <OPTION value=mm>MM</OPTION> 
+                    <OPTION value=pc>Picas</OPTION> <OPTION 
+                    value=em>EMS</OPTION> <OPTION value=ex>EXS</OPTION> <OPTION 
+                    value=%>%</OPTION></SELECT> </TD></TR>
+              <TR>
+                <TD class=label2>Inferior</TD>
+                <TD><INPUT class=campo 
+                  onkeydown="if (paddingbottomselect.selectedIndex == 0) paddingbottomselect.selectedIndex = 1;" 
+                  onblur="if (this.value != ''){&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9; &#9;teste.style.paddingBottom = this.value + paddingbottomselect.value;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9; }&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9; else{&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9; &#9;teste.style.paddingBottom = '';&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;paddingbottomselect.selectedIndex = 0;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9; }" 
+                  style="WIDTH: 100%" disabled size=3 name=paddingbottomtext> 
+</TD>
+                <TD><SELECT class=popup style="WIDTH: 100%" disabled 
+                  onchange="if (this.selectedIndex != 0){&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;if (paddingbottomtext.value != ''){&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9; &#9;&#9;teste.style.paddingBottom = paddingbottomtext.value + this.value;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;}&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9; }&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9; else {&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9; &#9;teste.style.paddingBottom = '';&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;paddingbottomtext.value = '';&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9; }" 
+                  name=paddingbottomselect> <OPTION value="" 
+                    selected></OPTION> <OPTION value=px>Pixels</OPTION> <OPTION 
+                    value=pt>Pontos</OPTION> <OPTION value=in>Poleg.</OPTION> 
+                    <OPTION value=cm>Cm</OPTION> <OPTION value=mm>MM</OPTION> 
+                    <OPTION value=pc>Picas</OPTION> <OPTION 
+                    value=em>EMS</OPTION> <OPTION value=ex>EXS</OPTION> <OPTION 
+                    value=%>%</OPTION></SELECT> </TD></TR>
+              <TR>
+                <TD class=label2>Direito</TD>
+                <TD><INPUT class=campo 
+                  onkeydown="if (paddingrightselect.selectedIndex == 0) paddingrightselect.selectedIndex = 1;" 
+                  onblur="if (this.value != ''){&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9; &#9;teste.style.paddingRight = this.value + paddingrightselect.value;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9; }&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9; else{&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9; &#9;teste.style.paddingRight = '';&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;paddingrightselect.selectedIndex = 0;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9; }" 
+                  style="WIDTH: 100%" disabled size=3 name=paddingrighttext> </TD>
+                <TD><SELECT class=popup style="WIDTH: 100%" disabled 
+                  onchange="if (this.selectedIndex != 0){&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;if (paddingrighttext.value != ''){&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9; &#9;&#9;teste.style.paddingRight = paddingrighttext.value + this.value;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;}&#9;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9; }&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9; else {&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9; &#9;teste.style.paddingRight = '';&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;paddingrighttext.value = '';&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9; }" 
+                  name=paddingrightselect> <OPTION value="" selected></OPTION> 
+                    <OPTION value=px>Pixels</OPTION> <OPTION 
+                    value=pt>Pontos</OPTION> <OPTION value=in>Poleg.</OPTION> 
+                    <OPTION value=cm>Cm</OPTION> <OPTION value=mm>MM</OPTION> 
+                    <OPTION value=pc>Picas</OPTION> <OPTION 
+                    value=em>EMS</OPTION> <OPTION value=ex>EXS</OPTION> <OPTION 
+                    value=%>%</OPTION></SELECT> </TD></TR>
+              <TR>
+                <TD class=label2>Esquerdo</TD>
+                <TD><INPUT class=campo 
+                  onkeydown="if (paddingleftselect.selectedIndex == 0) paddingleftselect.selectedIndex = 1;" 
+                  onblur="if (this.value != ''){&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9; &#9;teste.style.paddingLeft = this.value + paddingleftselect.value;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9; }&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9; else{&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9; &#9;teste.style.paddingLeft = '';&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;paddingleftselect.selectedIndex = 0;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9; }" 
+                  style="WIDTH: 100%" disabled size=3 name=paddinglefttext> </TD>
+                <TD><SELECT class=popup style="WIDTH: 100%" disabled 
+                  onchange="if (this.selectedIndex != 0){&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;if (paddinglefttext.value != ''){&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9; &#9;&#9;teste.style.paddingLeft = paddinglefttext.value + this.value;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;}&#9;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9; }&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9; else {&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9; &#9;teste.style.paddingLeft = '';&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;paddinglefttext.value = '';&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9; }" 
+                  name=paddingleftselect> <OPTION value="" selected></OPTION> 
+                    <OPTION value=px>Pixels</OPTION> <OPTION 
+                    value=pt>Pontos</OPTION> <OPTION value=in>Poleg.</OPTION> 
+                    <OPTION value=cm>Cm</OPTION> <OPTION value=mm>MM</OPTION> 
+                    <OPTION value=pc>Picas</OPTION> <OPTION 
+                    value=em>EMS</OPTION> <OPTION value=ex>EXS</OPTION> <OPTION 
+                    value=%>%</OPTION></SELECT> </TD></TR></TBODY></TABLE></TD>
+          <TD width="50%">
+            <TABLE cellPadding=0 width="100%">
+              <TBODY>
+              <TR>
+                <TD class=label3 align=middle colSpan=3>Margem</TD></TR>
+              <TR>
+                <TD class=label2 colSpan=3><INPUT 
+                  onclick="if (this.checked){&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;if (css.margintoptext.value != ''){&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;teste.style.marginTop = css.margintoptext.value + css.margintopselect.value;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;teste.style.marginBottom = css.margintoptext.value + css.margintopselect.value;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;teste.style.marginLeft = css.margintoptext.value + css.margintopselect.value;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;teste.style.marginRight = css.margintoptext.value + css.margintopselect.value;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.marginbottomtext.value = css.margintoptext.value;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.marginrighttext.value = css.margintoptext.value;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.marginlefttext.value = css.margintoptext.value;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.marginbottomtext.disabled = true;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.marginrighttext.disabled = true;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.marginlefttext.disabled = true;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.marginbottomselect.selectedIndex = css.margintopselect.selectedIndex;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.marginrightselect.selectedIndex = css.margintopselect.selectedIndex;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.marginleftselect.selectedIndex = css.margintopselect.selectedIndex;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.marginbottomselect.disabled = true;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.marginrightselect.disabled = true;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.marginleftselect.disabled = true;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;}&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;}&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;else{&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.marginbottomtext.disabled = false;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.marginrighttext.disabled = false;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.marginlefttext.disabled = false;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.marginbottomselect.disabled = false;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.marginrightselect.disabled = false;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.marginleftselect.disabled = false;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;}" 
+                  type=checkbox CHECKED name=margincheckbox>Igual para 
+              todos</TD></TR>
+              <TR>
+                <TD class=label2 width="15%">Superior</TD>
+                <TD width="41%"><INPUT class=campo 
+                  onkeydown="if (this.value == ''){&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;margintopselect.selectedIndex = 1;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;if (margincheckbox.checked){&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.marginbottomselect.selectedIndex = css.margintopselect.selectedIndex;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.marginrightselect.selectedIndex = css.margintopselect.selectedIndex;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.marginleftselect.selectedIndex = css.margintopselect.selectedIndex;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;}&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;}" 
+                  onblur="if (this.value != ''){&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;if (margincheckbox.checked){&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;teste.style.marginTop = css.margintoptext.value + css.margintopselect.value;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;teste.style.marginBottom = css.margintoptext.value + css.margintopselect.value;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;teste.style.marginLeft = css.margintoptext.value + css.margintopselect.value;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;teste.style.marginRight = css.margintoptext.value + css.margintopselect.value;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;}&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;   }&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;   else{&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;   &#9;&#9;css.margintopselect.selectedIndex = 0;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;teste.style.marginTop = '';&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;if (margincheckbox.checked){&#9;&#9;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;   css.marginbottomselect.selectedIndex = 0;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;   css.marginrightselect.selectedIndex = 0;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;   css.marginleftselect.selectedIndex = 0;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;teste.style.marginBottom = '';&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;teste.style.marginLeft = '';&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;teste.style.marginRight = '';&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;}&#9;&#9;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;   }" 
+                  onkeyup="if (margincheckbox.checked){&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.marginbottomtext.value = css.margintoptext.value;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.marginlefttext.value = css.margintoptext.value;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.marginrighttext.value = css.margintoptext.value;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;}" 
+                  style="WIDTH: 100%" size=3 name=margintoptext> </TD>
+                <TD width="33%"><SELECT class=popup style="WIDTH: 100%" 
+                  onchange="&#9;if (this.selectedIndex != 0){&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;if (margincheckbox.checked){&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;if (margintoptext.value != ''){&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;teste.style.marginTop = css.margintoptext.value + css.margintopselect.value;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;teste.style.marginBottom = css.margintoptext.value + css.margintopselect.value;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;teste.style.marginLeft = css.margintoptext.value + css.margintopselect.value;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;teste.style.marginRight = css.margintoptext.value + css.margintopselect.value;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;}&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.marginbottomselect.selectedIndex = css.margintopselect.selectedIndex;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.marginrightselect.selectedIndex = css.margintopselect.selectedIndex;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.marginleftselect.selectedIndex = css.margintopselect.selectedIndex;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;}&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;else {&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;if (margintoptext.value != ''){&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;teste.style.marginTop = css.margintoptext.value + css.margintopselect.value;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;}&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;}&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;}&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;else{&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;if (margincheckbox.checked){&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.marginbottomselect.selectedIndex = 0;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.marginrightselect.selectedIndex = 0;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;css.marginleftselect.selectedIndex = 0;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;}&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;}" 
+                  name=margintopselect> <OPTION value="" selected></OPTION> 
+                    <OPTION value=px>Pixels</OPTION> <OPTION 
+                    value=pt>Pontos</OPTION> <OPTION value=in>Poleg.</OPTION> 
+                    <OPTION value=cm>Cm</OPTION> <OPTION value=mm>MM</OPTION> 
+                    <OPTION value=pc>Picas</OPTION> <OPTION 
+                    value=em>EMS</OPTION> <OPTION value=ex>EXS</OPTION> <OPTION 
+                    value=%>%</OPTION></SELECT> </TD></TR>
+              <TR>
+                <TD class=label2>Inferior</TD>
+                <TD><INPUT class=campo 
+                  onkeydown="if (marginbottomselect.selectedIndex == 0) marginbottomselect.selectedIndex = 1;" 
+                  onblur="if (this.value != ''){&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9; &#9;teste.style.marginBottom = this.value + marginbottomselect.value;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9; }&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9; else{&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9; &#9;teste.style.marginBottom = '';&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;marginbottomselect.selectedIndex = 0;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9; }" 
+                  style="WIDTH: 100%" disabled size=3 name=marginbottomtext> </TD>
+                <TD><SELECT class=popup style="WIDTH: 100%" disabled 
+                  onchange="if (this.selectedIndex != 0){&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;if (marginbottomtext.value != ''){&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9; &#9;&#9;teste.style.marginBottom = marginbottomtext.value + this.value;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;}&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9; }&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9; else {&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9; &#9;teste.style.marginBottom = '';&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;marginbottomtext.value = '';&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9; }" 
+                  name=marginbottomselect> <OPTION value="" selected></OPTION> 
+                    <OPTION value=px>Pixels</OPTION> <OPTION 
+                    value=pt>Pontos</OPTION> <OPTION value=in>Poleg.</OPTION> 
+                    <OPTION value=cm>Cm</OPTION> <OPTION value=mm>MM</OPTION> 
+                    <OPTION value=pc>Picas</OPTION> <OPTION 
+                    value=em>EMS</OPTION> <OPTION value=ex>EXS</OPTION> <OPTION 
+                    value=%>%</OPTION></SELECT> </TD></TR>
+              <TR>
+                <TD class=label2>Direito</TD>
+                <TD><INPUT class=campo 
+                  onkeydown="if (marginrightselect.selectedIndex == 0) marginrightselect.selectedIndex = 1;" 
+                  onblur="if (this.value != ''){&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9; &#9;teste.style.marginRight = this.value + marginrightselect.value;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9; }&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9; else{&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9; &#9;teste.style.marginRight = '';&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;marginrightselect.selectedIndex = 0;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9; }" 
+                  style="WIDTH: 100%" disabled size=3 name=marginrighttext> </TD>
+                <TD><SELECT class=popup style="WIDTH: 100%" disabled 
+                  onchange="if (this.selectedIndex != 0){&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;if (marginrighttext.value != ''){&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9; &#9;&#9;teste.style.marginRight = marginrighttext.value + this.value;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;}&#9;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9; }&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9; else {&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9; &#9;teste.style.marginRight = '';&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;marginrighttext.value = '';&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9; }" 
+                  name=marginrightselect> <OPTION value="" selected></OPTION> 
+                    <OPTION value=px>Pixels</OPTION> <OPTION 
+                    value=pt>Pontos</OPTION> <OPTION value=in>Poleg.</OPTION> 
+                    <OPTION value=cm>Cm</OPTION> <OPTION value=mm>MM</OPTION> 
+                    <OPTION value=pc>Picas</OPTION> <OPTION 
+                    value=em>EMS</OPTION> <OPTION value=ex>EXS</OPTION> <OPTION 
+                    value=%>%</OPTION></SELECT> </TD></TR>
+              <TR>
+                <TD class=label2>Esquerdo</TD>
+                <TD><INPUT class=campo 
+                  onkeydown="if (marginleftselect.selectedIndex == 0) marginleftselect.selectedIndex = 1;" 
+                  onblur="if (this.value != ''){&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9; &#9;teste.style.marginLeft = this.value + marginleftselect.value;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9; }&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9; else{&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9; &#9;teste.style.marginLeft = '';&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;marginleftselect.selectedIndex = 0;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9; }" 
+                  style="WIDTH: 100%" disabled size=3 name=marginlefttext> </TD>
+                <TD><SELECT class=popup style="WIDTH: 100%" disabled 
+                  onchange="if (this.selectedIndex != 0){&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;if (marginlefttext.value != ''){&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9; &#9;&#9;teste.style.marginLeft = marginlefttext.value + this.value;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;}&#9;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9; }&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9; else {&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9; &#9;teste.style.marginLeft = '';&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;marginlefttext.value = '';&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9; }" 
+                  name=marginleftselect> <OPTION value="" selected></OPTION> 
+                    <OPTION value=px>Pixels</OPTION> <OPTION 
+                    value=pt>Pontos</OPTION> <OPTION value=in>Poleg.</OPTION> 
+                    <OPTION value=cm>Cm</OPTION> <OPTION value=mm>MM</OPTION> 
+                    <OPTION value=pc>Picas</OPTION> <OPTION 
+                    value=em>EMS</OPTION> <OPTION value=ex>EXS</OPTION> <OPTION 
+                    value=%>%</OPTION></SELECT> 
+      </TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></TD></TR>
+  <TR>
+    <TD width="100%">
+      <TABLE width="100%">
+        <TBODY>
+        <TR>
+          <TD width="50%">
+            <TABLE cellPadding=0 width="100%">
+              <TBODY>
+              <TR>
+                <TD class=label3 align=middle colSpan=3>Cor da Barra de 
+                Rolagem</TD></TR>
+              <TR>
+                <TD class=label2 align=right width="45%">Cor da Face</TD>
+                <TD width="42%"><INPUT class=campo 
+                  onblur="teste.style.scrollbarFaceColor = this.value;" 
+                  style="WIDTH: 100%" name=scrollfacecolor></TD>
+                <TD width="13%"><IMG style="CURSOR: pointer" 
+                  onclick="javascript: selecionacor('scrollfacecolor');" 
+                  src="Edição de Atributos CSS_arquivos/cores.gif" 
+                  name=scrollfacecolorbutton></TD></TR>
+              <TR>
+                <TD class=label2 align=right width="45%">Cor Destaque</TD>
+                <TD width="42%"><INPUT class=campo 
+                  onblur="teste.style.scrollbarHighLightColor = this.value;" 
+                  style="WIDTH: 100%" name=scrollhighlightcolor></TD>
+                <TD width="13%"><IMG style="CURSOR: pointer" 
+                  onclick="javascript: selecionacor('scrollhighlightcolor');" 
+                  src="Edição de Atributos CSS_arquivos/cores.gif" 
+                  name=scrollhighlightcolorbutton></TD></TR>
+              <TR>
+                <TD class=label2 align=right width="45%">Cor da Sombra</TD>
+                <TD width="42%"><INPUT class=campo 
+                  onblur="teste.style.scrollbarShadowColor = this.value;" 
+                  style="WIDTH: 100%" name=scrollshadowcolor></TD>
+                <TD width="13%"><IMG style="CURSOR: pointer" 
+                  onclick="javascript: selecionacor('scrollshadowcolor');" 
+                  src="Edição de Atributos CSS_arquivos/cores.gif" 
+                  name=scrollshadowcolorbutton></TD></TR>
+              <TR>
+                <TD class=label2 align=right width="45%">Cor Luz 3D</TD>
+                <TD width="42%"><INPUT class=campo 
+                  onblur="teste.style.scrollbar3dLightColor = this.value;" 
+                  style="WIDTH: 100%" name=scroll3dlightcolor></TD>
+                <TD width="13%"><IMG style="CURSOR: pointer" 
+                  onclick="javascript: selecionacor('scroll3dlightcolor');" 
+                  src="Edição de Atributos CSS_arquivos/cores.gif" 
+                  name=scroll3dlightcolorbutton></TD></TR></TBODY></TABLE>
+          <TD vAlign=top width="50%">
+            <TABLE cellPadding=0 width="100%">
+              <TBODY>
+              <TR>
+                <TD class=label3 align=middle colSpan=3>Cor da Barra de 
+                Rolagem</TD></TR>
+              <TR>
+                <TD class=label2 align=right width="45%">Cor da Seta</TD>
+                <TD width="42%"><INPUT class=campo 
+                  onblur="teste.style.scrollbarArrowColor = this.value;" 
+                  style="WIDTH: 100%" name=scrollarrowcolor></TD>
+                <TD width="13%"><IMG style="CURSOR: pointer" 
+                  onclick="javascript: selecionacor('scrollarrowcolor');" 
+                  src="Edição de Atributos CSS_arquivos/cores.gif" 
+                  name=scrollarrowcolorbutton></TD></TR>
+              <TR>
+                <TD class=label2 align=right width="45%">Cor da Trilha</TD>
+                <TD width="42%"><INPUT class=campo 
+                  onblur="teste.style.scrollbarTrackColor = this.value;" 
+                  style="WIDTH: 100%" name=scrolltrackcolor></TD>
+                <TD width="13%"><IMG style="CURSOR: pointer" 
+                  onclick="javascript: selecionacor('scrolltrackcolor');" 
+                  src="Edição de Atributos CSS_arquivos/cores.gif" 
+                  name=scrolltrackcolorbutton></TD></TR>
+              <TR>
+                <TD class=label2 align=right width="45%">Cor da Sombra 
+                Escura</TD>
+                <TD width="42%"><INPUT class=campo 
+                  onblur="teste.style.scrollbarDarkShadowColor = this.value;" 
+                  style="WIDTH: 100%" name=scrolldarkshadowcolor></TD>
+                <TD width="13%"><IMG style="CURSOR: pointer" 
+                  onclick="javascript: selecionacor('scrolldarkshadowcolor');" 
+                  src="Edição de Atributos CSS_arquivos/cores.gif" 
+                  name=scrolldarkshadowcolorbutton></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></TD></TR></TABLE></DIV>
+<DIV class=conteudo id=div6 
+style="LEFT: 4%; VISIBILITY: hidden; WIDTH: 91%; POSITION: absolute; TOP: 13%">
+<TABLE cellPadding=2 width="70%">
+  <TBODY>
+  <TR>
+    <TD width="50%">
+      <TABLE>
+        <TBODY>
+        <TR>
+          <TD class=label2>Posição</TD>
+          <TD colSpan=2><SELECT class=popup style="WIDTH: 100%" 
+            onchange="teste.style.position = this.value;" name=position> 
+              <OPTION value="" selected></OPTION> <OPTION 
+              value=absolute>Absoluta</OPTION> <OPTION 
+              value=relative>Relativa</OPTION> <OPTION 
+              value=static>Estática</OPTION></SELECT> </TD></TR>
+        <TR>
+          <TD class=label2 width="20%">Largura</TD>
+          <TD width="40%"><INPUT class=campo 
+            onkeydown="if (larguraselect.selectedIndex == 0) larguraselect.selectedIndex = 1;" 
+            onblur="teste.style.width = this.value + larguraselect.value" 
+            style="WIDTH: 100%" size=3 name=largura></TD>
+          <TD width="40%"><SELECT class=popup style="WIDTH: 100%" 
+            onchange="if (this.selectedIndex != 0){&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;teste.style.width = largura.value + larguraselect.value;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;}&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;else {&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;largura.value = '';&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;teste.style.width = '';&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;}" 
+            name=larguraselect> <OPTION value="" selected></OPTION> <OPTION 
+              value=px>Pixels</OPTION> <OPTION value=pt>Pontos</OPTION> <OPTION 
+              value=in>Poleg.</OPTION> <OPTION value=cm>Cm</OPTION> <OPTION 
+              value=mm>MM</OPTION> <OPTION value=pc>Picas</OPTION> <OPTION 
+              value=em>EMS</OPTION> <OPTION value=ex>EXS</OPTION> <OPTION 
+              value=%>%</OPTION></SELECT> </TD></TR>
+        <TR>
+          <TD class=label2>Altura</TD>
+          <TD><INPUT class=campo 
+            onkeydown="if (alturaselect.selectedIndex == 0) alturaselect.selectedIndex = 1;" 
+            onblur="teste.style.height = this.value + alturaselect.value" 
+            style="WIDTH: 100%" size=3 name=altura></TD>
+          <TD><SELECT class=popup style="WIDTH: 100%" 
+            onchange="if (this.selectedIndex != 0){&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;teste.style.height = altura.value + alturaselect.value;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;}&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;else {&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;altura.value = '';&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;teste.style.height = '';&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;}" 
+            name=alturaselect> <OPTION value="" selected></OPTION> <OPTION 
+              value=px>Pixels</OPTION> <OPTION value=pt>Pontos</OPTION> <OPTION 
+              value=in>Poleg.</OPTION> <OPTION value=cm>Cm</OPTION> <OPTION 
+              value=mm>MM</OPTION> <OPTION value=pc>Picas</OPTION> <OPTION 
+              value=em>EMS</OPTION> <OPTION value=ex>EXS</OPTION> <OPTION 
+              value=%>%</OPTION></SELECT> </TD></TR>
+        <TR>
+          <TD class=label3 align=middle colSpan=3>Posicionamento</TD></TR>
+        <TR>
+          <TD class=label2>Topo</TD>
+          <TD><INPUT class=campo 
+            onkeydown="if (toposelect.selectedIndex == 0) toposelect.selectedIndex = 1;" 
+            onblur="teste.style.top = this.value + toposelect.value" 
+            style="WIDTH: 100%" size=3 name=topo></TD>
+          <TD><SELECT class=popup style="WIDTH: 100%" 
+            onchange="if (this.selectedIndex != 0){&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;teste.style.top = topo.value + toposelect.value;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;}&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;else {&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;topo.value = '';&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;teste.style.top = '';&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;}" 
+            name=toposelect> <OPTION value="" selected></OPTION> <OPTION 
+              value=px>Pixels</OPTION> <OPTION value=pt>Pontos</OPTION> <OPTION 
+              value=in>Poleg.</OPTION> <OPTION value=cm>Cm</OPTION> <OPTION 
+              value=mm>MM</OPTION> <OPTION value=pc>Picas</OPTION> <OPTION 
+              value=em>EMS</OPTION> <OPTION value=ex>EXS</OPTION> <OPTION 
+              value=%>%</OPTION></SELECT> </TD></TR>
+        <TR>
+          <TD class=label2>Esquerda</TD>
+          <TD><INPUT class=campo 
+            onkeydown="if (esquerdaselect.selectedIndex == 0) esquerdaselect.selectedIndex = 1;" 
+            onblur="teste.style.left = this.value + esquerdaselect.value" 
+            style="WIDTH: 100%" size=3 name=esquerda></TD>
+          <TD><SELECT class=popup style="WIDTH: 100%" 
+            onchange="if (this.selectedIndex != 0){&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;teste.style.left = esquerda.value + esquerdaselect.value;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;}&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;else {&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;esquerda.value = '';&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;teste.style.left = '';&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;}" 
+            name=esquerdaselect> <OPTION value="" selected></OPTION> <OPTION 
+              value=px>Pixels</OPTION> <OPTION value=pt>Pontos</OPTION> <OPTION 
+              value=in>Poleg.</OPTION> <OPTION value=cm>Cm</OPTION> <OPTION 
+              value=mm>MM</OPTION> <OPTION value=pc>Picas</OPTION> <OPTION 
+              value=em>EMS</OPTION> <OPTION value=ex>EXS</OPTION> <OPTION 
+              value=%>%</OPTION></SELECT> </TD></TR>
+        <TR>
+          <TD class=label2>Direita</TD>
+          <TD><INPUT class=campo 
+            onkeydown="if (direitaselect.selectedIndex == 0) direitaselect.selectedIndex = 1;" 
+            onblur="teste.style.right = this.value + direitaselect.value" 
+            style="WIDTH: 100%" size=3 name=direita></TD>
+          <TD><SELECT class=popup style="WIDTH: 100%" 
+            onchange="if (this.selectedIndex != 0){&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;teste.style.right = direita.value + direitaselect.value;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;}&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;else {&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;direita.value = '';&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;teste.style.right = '';&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;}" 
+            name=direitaselect> <OPTION value="" selected></OPTION> <OPTION 
+              value=px>Pixels</OPTION> <OPTION value=pt>Pontos</OPTION> <OPTION 
+              value=in>Poleg.</OPTION> <OPTION value=cm>Cm</OPTION> <OPTION 
+              value=mm>MM</OPTION> <OPTION value=pc>Picas</OPTION> <OPTION 
+              value=em>EMS</OPTION> <OPTION value=ex>EXS</OPTION> <OPTION 
+              value=%>%</OPTION></SELECT> </TD></TR>
+        <TR>
+          <TD class=label2>Inferior</TD>
+          <TD><INPUT class=campo 
+            onkeydown="if (inferiorselect.selectedIndex == 0) inferiorselect.selectedIndex = 1;" 
+            onblur="teste.style.bottom = this.value + inferiorselect.value" 
+            style="WIDTH: 100%" size=3 name=inferior></TD>
+          <TD><SELECT class=popup style="WIDTH: 100%" 
+            onchange="if (this.selectedIndex != 0){&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;teste.style.bottom = inferior.value + inferiorselect.value;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;}&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;else {&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;inferior.value = '';&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;teste.style.bottom = '';&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;}" 
+            name=inferiorselect> <OPTION value="" selected></OPTION> <OPTION 
+              value=px>Pixels</OPTION> <OPTION value=pt>Pontos</OPTION> <OPTION 
+              value=in>Poleg.</OPTION> <OPTION value=cm>Cm</OPTION> <OPTION 
+              value=mm>MM</OPTION> <OPTION value=pc>Picas</OPTION> <OPTION 
+              value=em>EMS</OPTION> <OPTION value=ex>EXS</OPTION> <OPTION 
+              value=%>%</OPTION></SELECT> </TD></TR></TBODY></TABLE></TD>
+    <TD width="50%">
+      <TABLE>
+        <TBODY>
+        <TR>
+          <TD class=label2>Visibilidade</TD>
+          <TD colSpan=2><SELECT class=popup style="WIDTH: 100%" 
+            onchange="teste.style.visibility = this.value;" name=visibility> 
+              <OPTION value="" selected></OPTION> <OPTION 
+              value=inherit>Herdar</OPTION> <OPTION 
+              value=visible>Visível</OPTION> <OPTION 
+              value=hidden>Escondido</OPTION></SELECT> </TD></TR>
+        <TR>
+          <TD class=label2>Transbordar</TD>
+          <TD colSpan=2><SELECT class=popup style="WIDTH: 100%" 
+            onchange="teste.style.overflow = this.value;" name=overflow> 
+              <OPTION value="" selected></OPTION> <OPTION 
+              value=visible>Visível</OPTION> <OPTION value=scroll>Barra de 
+              Rolagem</OPTION> <OPTION value=hidden>Escondido</OPTION> <OPTION 
+              value=auto>Automático</OPTION></SELECT> </TD></TR>
+        <TR>
+          <TD class=label2>Camada</TD>
+          <TD colSpan=2><INPUT class=campo 
+            onblur="teste.style.zIndex = this.value" style="WIDTH: 100%" size=3 
+            name=largura></TD></TR>
+        <TR>
+          <TD class=label3 align=middle colSpan=3>Recortar</TD></TR>
+        <TR>
+          <TD class=label2 width="20%">Topo</TD>
+          <TD width="40%"><INPUT class=campo 
+            onkeydown="if (cliptoposelect.selectedIndex == 0) cliptoposelect.selectedIndex = 1;" 
+            onblur="teste.style.clip.top = this.value + cliptoposelect.value" 
+            style="WIDTH: 100%" size=3 name=cliptopo></TD>
+          <TD width="40%"><SELECT class=popup style="WIDTH: 100%" 
+            onchange="if (this.selectedIndex != 0){&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;teste.style.clip.top = cliptopo.value + cliptoposelect.value;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;}&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;else {&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;cliptopo.value = '';&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;teste.style.clip.top = '';&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;}" 
+            name=cliptoposelect> <OPTION value="" selected></OPTION> <OPTION 
+              value=px>Pixels</OPTION> <OPTION value=pt>Pontos</OPTION> <OPTION 
+              value=in>Poleg.</OPTION> <OPTION value=cm>Cm</OPTION> <OPTION 
+              value=mm>MM</OPTION> <OPTION value=pc>Picas</OPTION> <OPTION 
+              value=em>EMS</OPTION> <OPTION value=ex>EXS</OPTION> <OPTION 
+              value=%>%</OPTION></SELECT> </TD></TR>
+        <TR>
+          <TD class=label2>Esquerda</TD>
+          <TD><INPUT class=campo 
+            onkeydown="if (clipesquerdaselect.selectedIndex == 0) clipesquerdaselect.selectedIndex = 1;" 
+            onblur="teste.style.clip.left = this.value + clipesquerdaselect.value" 
+            style="WIDTH: 100%" size=3 name=clipesquerda></TD>
+          <TD><SELECT class=popup style="WIDTH: 100%" 
+            onchange="if (this.selectedIndex != 0){&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;teste.style.clip.left = clipesquerda.value + clipesquerdaselect.value;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;}&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;else {&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;clipesquerda.value = '';&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;teste.style.clip.left = '';&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;}" 
+            name=clipesquerdaselect> <OPTION value="" selected></OPTION> 
+              <OPTION value=px>Pixels</OPTION> <OPTION value=pt>Pontos</OPTION> 
+              <OPTION value=in>Poleg.</OPTION> <OPTION value=cm>Cm</OPTION> 
+              <OPTION value=mm>MM</OPTION> <OPTION value=pc>Picas</OPTION> 
+              <OPTION value=em>EMS</OPTION> <OPTION value=ex>EXS</OPTION> 
+              <OPTION value=%>%</OPTION></SELECT> </TD></TR>
+        <TR>
+          <TD class=label2>Direita</TD>
+          <TD><INPUT class=campo 
+            onkeydown="if (clipdireitaselect.selectedIndex == 0) clipdireitaselect.selectedIndex = 1;" 
+            onblur="teste.style.clip.right = this.value + clipdireitaselect.value" 
+            style="WIDTH: 100%" size=3 name=clipdireita></TD>
+          <TD><SELECT class=popup style="WIDTH: 100%" 
+            onchange="if (this.selectedIndex != 0){&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;teste.style.clip.right = clipdireita.value + clipdireitaselect.value;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;}&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;else {&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;clipdireita.value = '';&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;teste.style.clip.right = '';&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;}" 
+            name=clipdireitaselect> <OPTION value="" selected></OPTION> 
+              <OPTION value=px>Pixels</OPTION> <OPTION value=pt>Pontos</OPTION> 
+              <OPTION value=in>Poleg.</OPTION> <OPTION value=cm>Cm</OPTION> 
+              <OPTION value=mm>MM</OPTION> <OPTION value=pc>Picas</OPTION> 
+              <OPTION value=em>EMS</OPTION> <OPTION value=ex>EXS</OPTION> 
+              <OPTION value=%>%</OPTION></SELECT> </TD></TR>
+        <TR>
+          <TD class=label2>Inferior</TD>
+          <TD><INPUT class=campo 
+            onkeydown="if (clipinferiorselect.selectedIndex == 0) clipinferiorselect.selectedIndex = 1;" 
+            onblur="teste.style.clip.bottom = this.value + clipinferiorselect.value" 
+            style="WIDTH: 100%" size=3 name=clipinferior></TD>
+          <TD><SELECT class=popup style="WIDTH: 100%" 
+            onchange="if (this.selectedIndex != 0){&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;teste.style.clip.bottom = clipinferior.value + clipinferiorselect.value;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;}&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;else {&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;clipinferior.value = '';&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;teste.style.clip.bottom = '';&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;}" 
+            name=clipinferiorselect> <OPTION value="" selected></OPTION> 
+              <OPTION value=px>Pixels</OPTION> <OPTION value=pt>Pontos</OPTION> 
+              <OPTION value=in>Poleg.</OPTION> <OPTION value=cm>Cm</OPTION> 
+              <OPTION value=mm>MM</OPTION> <OPTION value=pc>Picas</OPTION> 
+              <OPTION value=em>EMS</OPTION> <OPTION value=ex>EXS</OPTION> 
+              <OPTION value=%>%</OPTION></SELECT> 
+  </TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></DIV>
+<DIV class=conteudo id=div7 
+style="LEFT: 4%; VISIBILITY: hidden; WIDTH: 91%; POSITION: absolute; TOP: 13%">
+<TABLE cellPadding=0 width="70%">
+  <TBODY>
+  <TR>
+    <TD class=label2 style="WIDTH: 30%">Cursor</TD>
+    <TD style="WIDTH: 70%"><SELECT class=popup style="WIDTH: 100%" 
+      onchange="teste.style.cursor = this.value;"> <OPTION value="" 
+        selected></OPTION> <OPTION value=hand>Mão</OPTION> <OPTION 
+        value=crosshair>Cruz</OPTION> <OPTION value=text>Texto</OPTION> <OPTION 
+        value=wait>Aguarde</OPTION> <OPTION value=default>Padrão</OPTION> 
+        <OPTION value=help>Ajuda</OPTION> <OPTION 
+        value=e-resize>Redimensionamento Leste</OPTION> <OPTION 
+        value=ne-resize>Redimensionamento Nordeste</OPTION> <OPTION 
+        value=n-resize>Redimensionamento Norte</OPTION> <OPTION 
+        value=nw-resize>Redimensionamento Noroeste</OPTION> <OPTION 
+        value=w-resize>Redimensionamento Oeste</OPTION> <OPTION 
+        value=sw-resize>Redimensionamento Sudoeste</OPTION> <OPTION 
+        value=s-resize>Redimensionamento Sul</OPTION> <OPTION 
+        value=se-resize>Redimensionamento Sudeste</OPTION> <OPTION 
+        value=auto>Automático</OPTION></SELECT> </TD></TR>
+  <TR>
+    <TD class=label2 style="WIDTH: 30%">Filtros</TD>
+    <TD><SELECT class=popup id=filtro style="WIDTH: 100%" 
+      onchange=editafiltro(this.value);> <OPTION value="" selected></OPTION> 
+        <OPTION value=Alpha>Alpha</OPTION> <OPTION 
+        value=AlphaImageLoader>AlphaImageLoader</OPTION> <OPTION 
+        value=BasicImage>BasicImage</OPTION> <OPTION value=Blur>Blur</OPTION> 
+        <OPTION value=Chroma>Chroma</OPTION> <OPTION 
+        value=DropShadow>DropShadow</OPTION> <OPTION 
+        value=Emboss>Emboss</OPTION> <OPTION value=Engrave>Engrave</OPTION> 
+        <OPTION value=Glow>Glow</OPTION> <OPTION 
+        value=Gradient>Gradient</OPTION> <OPTION 
+        value=MotionBlur>MotionBlur</OPTION> <OPTION 
+        value=Pixelate>Pixelate</OPTION> <OPTION value=Shadow>Shadow</OPTION> 
+        <OPTION value=Wave>Wave</OPTION></SELECT> </TD></TR></TBODY></TABLE><SPAN 
+class=conteudo id=filtro_alpha 
+style="LEFT: 10%; VISIBILITY: hidden; WIDTH: 91%; POSITION: absolute; TOP: 150%">
+<TABLE width="70%">
+  <TBODY>
+  <TR>
+    <TD class=label3 
+    style="FILTER: progid:DXImageTransform.Microsoft.Gradient(gradientType=1,startColorStr=#AAFFFF,endColorStr=#FFFFFF)" 
+    align=middle colSpan=4>Atributos</TD></TR>
+  <TR>
+    <TD class=Label2 colSpan=2>Estilo</TD>
+    <TD colSpan=2><SELECT class=popup id=alpha_type 
+      onchange=set_filter_alpha(); name=alpha_type> <OPTION value=0 
+        selected>Opacidade Uniforme</OPTION> <OPTION value=1>Opacidade 
+        Lineare</OPTION> <OPTION value=2>Opacidade Radial</OPTION> <OPTION 
+        value=3>Opacidade Retangular</OPTION></SELECT> </TD></TR>
+  <TR>
+    <TD width="100%" colSpan=4>
+      <HR>
+    </TD></TR>
+  <TR>
+    <TD class=Label3 align=middle colSpan=4>Digite Valores de 0 a 100</TD></TR>
+  <TR>
+    <TD class=Label2>Opacidade</TD>
+    <TD><INPUT class=campo id=opacidade onblur=set_filter_alpha(); 
+      name=opacidade></TD>
+    <TD class=Label2>Opacidade Final</TD>
+    <TD><INPUT class=campo id=opacidadefinal onblur=set_filter_alpha(); 
+      name=opacidadefinal></TD></TR>
+  <TR>
+    <TD class=Label2>X Inicial</TD>
+    <TD><INPUT class=campo id=xinicial onblur=set_filter_alpha(); 
+      name=xinicial></TD>
+    <TD class=Label2>X Final</TD>
+    <TD><INPUT class=campo id=xfinal onblur=set_filter_alpha(); 
+  name=xfinal></TD></TR>
+  <TR>
+    <TD class=Label2>Y Inicial</TD>
+    <TD><INPUT class=campo id=yinicial onblur=set_filter_alpha(); 
+      name=yinicial></TD>
+    <TD class=Label2>Y Final</TD>
+    <TD><INPUT class=campo id=yfinal onblur=set_filter_alpha(); 
+  name=yfinal></TD></TR></TBODY></TABLE></SPAN><SPAN class=conteudo 
+id=filtro_AlphaImageLoader 
+style="LEFT: 10%; VISIBILITY: hidden; WIDTH: 91%; POSITION: absolute; TOP: 150%">
+<TABLE width="70%">
+  <TBODY>
+  <TR>
+    <TD class=label3 
+    style="FILTER: progid:DXImageTransform.Microsoft.Gradient(gradientType=1,startColorStr=#AAFFFF,endColorStr=#FFFFFF)" 
+    align=middle colSpan=3>Atributos</TD></TR>
+  <TR>
+    <TD class=Label2 width="33%">Imagem</TD>
+    <TD width="33%"><INPUT class=campo id=imagemalfafiltro 
+      onblur=set_filter_alphaimageloader(); style="WIDTH: 100%" 
+      name=imagemalfafiltro></TD>
+    <TD width="33%"><IMG style="CURSOR: pointer" 
+      onclick="arq(imagemalfafiltro.form.name + '.' + imagemalfafiltro.name);" 
+      src="Edição de Atributos CSS_arquivos/procurar.gif"></TD></TR>
+  <TR>
+    <TD class=Label2>Método de Dimensionamento</TD>
+    <TD colSpan=2><SELECT class=popup id=alphaimageloader_type 
+      onchange=set_filter_alphaimageloader(); name=alphaimageloader_type> 
+        <OPTION value=crop selected>Recorte</OPTION> <OPTION 
+        value=image>Dimensionar do tamanho da Imagem</OPTION> <OPTION 
+        value=scale>Dimensionar a Imagem para o Tamanho</OPTION></SELECT> </TD></TR>
+  <TR>
+    <TD width="100%" colSpan=3>
+      <HR>
+    </TD></TR></TBODY></TABLE></SPAN><SPAN class=conteudo id=filtro_basicimage 
+style="LEFT: 10%; VISIBILITY: hidden; WIDTH: 91%; POSITION: absolute; TOP: 150%">
+<TABLE width="70%">
+  <TBODY>
+  <TR>
+    <TD class=label3 
+    style="FILTER: progid:DXImageTransform.Microsoft.Gradient(gradientType=1,startColorStr=#AAFFFF,endColorStr=#FFFFFF)" 
+    align=middle colSpan=4>Atributos</TD></TR>
+  <TR>
+    <TD class=Label2>Rotação</TD>
+    <TD colSpan=3><SELECT class=popup id=basicimage_rotation 
+      style="WIDTH: 70%" onchange=set_filter_basicimage(); 
+      name=basicimage_rotation> <OPTION value=0 selected>0 Graus</OPTION> 
+        <OPTION value=1>90 Graus</OPTION> <OPTION value=2>180 Graus</OPTION> 
+        <OPTION value=3>270 Graus</OPTION></SELECT> </TD></TR>
+  <TR>
+    <TD class=Label2>Opacidade (0.0 a 1.0)</TD>
+    <TD colSpan=3><INPUT class=campo id=basicimage_opacity 
+      onblur=set_filter_basicimage(); style="WIDTH: 70%" 
+    name=basicimage_opacity></TD></TR>
+  <TR>
+    <TD width="100%" colSpan=4>
+      <HR>
+    </TD></TR>
+  <TR>
+    <TD class=label2 width="25%">Espelho</TD>
+    <TD width="25%"><INPUT id=basicimage_espelho 
+      onclick=set_filter_basicimage(); type=checkbox name=basicimage_espelho></TD>
+    <TD class=label2 width="25%">Inverter</TD>
+    <TD width="25%"><INPUT id=basicimage_inverter 
+      onclick=set_filter_basicimage(); type=checkbox 
+  name=basicimage_inverter></TD></TR>
+  <TR>
+    <TD class=label2 width="25%">Raio X</TD>
+    <TD width="25%"><INPUT id=basicimage_raiox 
+      onclick=set_filter_basicimage(); type=checkbox name=basicimage_raiox></TD>
+    <TD class=label2 width="25%">Tons de Cinza</TD>
+    <TD width="25%"><INPUT id=basicimage_cinza 
+      onclick=set_filter_basicimage(); type=checkbox 
+  name=basicimage_cinza></TD></TR></TBODY></TABLE></SPAN><SPAN class=conteudo 
+id=filtro_blur 
+style="LEFT: 10%; VISIBILITY: hidden; WIDTH: 91%; POSITION: absolute; TOP: 150%">
+<TABLE width="70%">
+  <TBODY>
+  <TR>
+    <TD class=label3 
+    style="FILTER: progid:DXImageTransform.Microsoft.Gradient(gradientType=1,startColorStr=#AAFFFF,endColorStr=#FFFFFF)" 
+    align=middle colSpan=2>Atributos</TD></TR>
+  <TR>
+    <TD class=Label2 width="50%">Raio do Pixel</TD>
+    <TD width="50%"><INPUT class=campo id=blur_pixel onblur=set_filter_blur(); 
+      style="WIDTH: 70%" name=blur_pixel> </TD></TR>
+  <TR>
+    <TD class=Label2>Fazer Sombra</TD>
+    <TD colSpan=3><INPUT id=blur_box onclick=set_filter_blur(); type=checkbox 
+      name=blur_box></TD></TR>
+  <TR>
+    <TD class=Label2>Opacidade (0.0 a 1.0)</TD>
+    <TD colSpan=3><INPUT class=campo id=blur_shadow onblur=set_filter_blur(); 
+      style="WIDTH: 70%" name=blur_shadow></TD></TR></TBODY></TABLE></SPAN><SPAN 
+class=conteudo id=filtro_croma 
+style="LEFT: 10%; VISIBILITY: hidden; WIDTH: 91%; POSITION: absolute; TOP: 150%">
+<TABLE width="70%">
+  <TBODY>
+  <TR>
+    <TD class=label3 
+    style="FILTER: progid:DXImageTransform.Microsoft.Gradient(gradientType=1,startColorStr=#AAFFFF,endColorStr=#FFFFFF)" 
+    align=middle colSpan=3>Atributos</TD></TR>
+  <TR>
+    <TD class=Label2 width="25%">Cor</TD>
+    <TD width="50%"><INPUT class=campo id=croma_cor onblur=set_filter_croma(); 
+      style="WIDTH: 100%" name=croma_cor> </TD>
+    <TD width="25%"><IMG style="CURSOR: pointer" 
+      onclick="javascript: selecionacor('croma');" 
+      src="Edição de Atributos CSS_arquivos/cores.gif"></TD></TR></TBODY></TABLE></SPAN><SPAN 
+class=conteudo id=filtro_drop_shadow 
+style="LEFT: 10%; VISIBILITY: hidden; WIDTH: 91%; POSITION: absolute; TOP: 150%">
+<TABLE cellSpacing=2 width="70%">
+  <TBODY>
+  <TR>
+    <TD class=label3 
+    style="FILTER: progid:DXImageTransform.Microsoft.Gradient(gradientType=1,startColorStr=#AAFFFF,endColorStr=#FFFFFF)" 
+    align=middle colSpan=4>Atributos</TD></TR>
+  <TR>
+    <TD class=Label2 width="25%">Cor</TD>
+    <TD colSpan=2><INPUT class=campo id=drop_shadow_cor 
+      onblur=set_filter_drop_shadow(); style="WIDTH: 100%" 
+    name=drop_shadow_cor></TD>
+    <TD width="25%"><IMG style="CURSOR: pointer" 
+      onclick="javascript: selecionacor('drop_shadow');" 
+      src="Edição de Atributos CSS_arquivos/cores.gif"></TD></TR>
+  <TR>
+    <TD class=Label2 colSpan=2>Positivo</TD>
+    <TD colSpan=2><INPUT id=drop_shadow_box onclick=set_filter_drop_shadow(); 
+      type=checkbox CHECKED name=drop_shadow_box></TD></TR>
+  <TR>
+    <TD class=Label2>X</TD>
+    <TD width="20%"><INPUT class=campo id=drop_shadow_x 
+      onblur=set_filter_drop_shadow(); name=drop_shadow_x width="100%"></TD>
+    <TD width="20%"><INPUT class=campo id=drop_shadow_y 
+      onblur=set_filter_drop_shadow(); name=drop_shadow_y width="100%"></TD>
+    <TD class=Label3>Y</TD></TR></TBODY></TABLE></SPAN><SPAN class=conteudo 
+id=filtro_glow 
+style="LEFT: 10%; VISIBILITY: hidden; WIDTH: 91%; POSITION: absolute; TOP: 150%">
+<TABLE width="70%">
+  <TBODY>
+  <TR>
+    <TD class=label3 
+    style="FILTER: progid:DXImageTransform.Microsoft.Gradient(gradientType=1,startColorStr=#AAFFFF,endColorStr=#FFFFFF)" 
+    align=middle colSpan=3>Atributos</TD></TR>
+  <TR>
+    <TD class=Label2 width="25%">Cor</TD>
+    <TD width="50%"><INPUT class=campo id=glow_cor onblur=set_filter_glow(); 
+      style="WIDTH: 100%" name=glow_cor></TD>
+    <TD width="25%"><IMG style="CURSOR: pointer" 
+      onclick="javascript: selecionacor('glow');" 
+      src="Edição de Atributos CSS_arquivos/cores.gif"></TD></TR>
+  <TR>
+    <TD class=Label2>Quantidade</TD>
+    <TD><INPUT class=campo id=qtglow onblur=set_filter_glow(); 
+      style="WIDTH: 100%" name=qtglow></TD></TR></TBODY></TABLE></SPAN><SPAN 
+class=conteudo id=filtro_gradient 
+style="LEFT: 10%; VISIBILITY: hidden; WIDTH: 91%; POSITION: absolute; TOP: 150%">
+<TABLE width="70%">
+  <TBODY>
+  <TR>
+    <TD class=label3 
+    style="FILTER: progid:DXImageTransform.Microsoft.Gradient(gradientType=1,startColorStr=#AAFFFF,endColorStr=#FFFFFF)" 
+    align=middle colSpan=3>Atributos</TD></TR>
+  <TR>
+    <TD class=label2 width="25%">Vertical</TD>
+    <TD width="25%"><INPUT id=gradient_type1 
+      onclick="if (gradient_type2.checked) gradient_type2.checked = false; set_filter_gradient();" 
+      type=checkbox CHECKED name=gradient_type1></TD>
+    <TD class=label2 width="25%">Horizontal</TD>
+    <TD width="25%"><INPUT id=gradient_type2 
+      onclick="if (gradient_type1.checked) gradient_type1.checked = false; set_filter_gradient();" 
+      type=checkbox name=gradient_type2></TD></TR>
+  <TR>
+    <TD class=Label2 width="25%">Cor</TD>
+    <TD width="50%" colSpan=2><INPUT class=campo id=gradient_start_color 
+      onblur=set_filter_gradient(); style="WIDTH: 100%" 
+      name=gradient_start_color></TD>
+    <TD width="25%"><IMG style="CURSOR: pointer" 
+      onclick="javascript: selecionacor('gradient1');" 
+      src="Edição de Atributos CSS_arquivos/cores.gif"></TD></TR>
+  <TR>
+    <TD class=Label2 width="25%">Cor</TD>
+    <TD width="50%" colSpan=2><INPUT class=campo id=gradient_end_color 
+      onblur=set_filter_gradient(); style="WIDTH: 100%" 
+    name=gradient_end_color></TD>
+    <TD width="25%"><IMG style="CURSOR: pointer" 
+      onclick="javascript: selecionacor('gradient2');" 
+      src="Edição de Atributos CSS_arquivos/cores.gif"></TD></TR></TBODY></TABLE></SPAN><SPAN 
+class=conteudo id=filtro_motionblur 
+style="LEFT: 10%; VISIBILITY: hidden; WIDTH: 91%; POSITION: absolute; TOP: 150%">
+<TABLE width="70%">
+  <TBODY>
+  <TR>
+    <TD class=label3 
+    style="FILTER: progid:DXImageTransform.Microsoft.Gradient(gradientType=1,startColorStr=#AAFFFF,endColorStr=#FFFFFF)" 
+    align=middle colSpan=2>Atributos</TD></TR>
+  <TR>
+    <TD class=Label2 width="50%">Direção (0 - 360<SUP>o</SUP>)</TD>
+    <TD width="50%"><INPUT class=campo id=mblur_direction 
+      onblur=set_filter_motionblur(); style="WIDTH: 70%" name=mblur_direction> 
+    </TD></TR>
+  <TR>
+    <TD class=Label2>Quantidade</TD>
+    <TD colSpan=3><INPUT class=campo id=mblur_qt 
+      onblur=set_filter_motionblur(); style="WIDTH: 70%" 
+  name=mblur_qt></TD></TR></TBODY></TABLE></SPAN><SPAN class=conteudo 
+id=filtro_pixel 
+style="LEFT: 10%; VISIBILITY: hidden; WIDTH: 91%; POSITION: absolute; TOP: 150%">
+<TABLE width="70%">
+  <TBODY>
+  <TR>
+    <TD class=label3 
+    style="FILTER: progid:DXImageTransform.Microsoft.Gradient(gradientType=1,startColorStr=#AAFFFF,endColorStr=#FFFFFF)" 
+    align=middle colSpan=2>Atributos</TD></TR>
+  <TR>
+    <TD class=Label2 width="50%">Quadrado Máximo (2 - 50)</TD>
+    <TD width="50%"><INPUT class=campo id=pixmax onblur=set_filter_pixel(); 
+      style="WIDTH: 70%" name=pixmax> </TD></TR></TBODY></TABLE></SPAN></DIV>
+<DIV id=teste 
+style="RIGHT: 25px; WIDTH: 150px; POSITION: absolute; TOP: 50px; HEIGHT: 150px" 
+name="teste">Área de Testes<BR>Área de Testes<BR>Área de Testes<BR>Área de 
+Testes<BR></DIV></FORM>
+<SCRIPT language=JavaScript type=text/javascript>
+
+		function set_filter_pixel(){
+			var filtro = "FILTER: progid:DXImageTransform.Microsoft.Pixelate(maxsquare=";
+			if (css.pixmax.value == "") css.pixmax.value = "10"; 
+			teste.style.filter = filtro + css.pixmax.value + ")";
+		}
+
+		function set_filter_motionblur(){
+			var filtro = "progid:DXImageTransform.Microsoft.MotionBlur(direction="
+			if (css.mblur_direction.value == "") css.mblur_direction.value = "60";
+			filtro += css.mblur_direction.value;
+			if (css.mblur_qt.value == "") css.mblur_qt.value = "5";
+			filtro += ",strength=" + css.mblur_qt.value + ")";
+			teste.style.filter = filtro;
+		}
+		function set_filter_gradient(){
+			var filtro = "progid:DXImageTransform.Microsoft.Gradient(gradientType=";
+			if (css.gradient_type1.checked) filtro += "0";
+			else filtro += "1";
+			if (css.gradient_start_color.value == "") css.gradient_start_color.value = "#00FF00";
+			filtro += ",startColorStr=" + css.gradient_start_color.value;
+			if (css.gradient_end_color.value == "") css.gradient_end_color.value = "#FF0000";
+			filtro += ",endColorStr=" + css.gradient_end_color.value + ")";
+			teste.style.filter = filtro;
+		}
+		function set_filter_glow(){
+			filtro = "progid:DXImageTransform.Microsoft.Glow(color=";
+			if (css.glow_cor.value != "") filtro += css.glow_cor.value;
+			else {
+				filtro += "#FF0000";
+				css.glow_cor.value = "#FF0000";
+			}
+			if (css.qtglow.value != "") filtro += ",strength=" + css.qtglow.value;
+			else {
+				css.qtglow.value = "5";
+				filtro += ",strength=5";
+			}
+			filtro += ")";
+			teste.style.filter = filtro;
+		}
+		
+		function set_filter_drop_shadow(){
+			var filtro = "progid:DXImageTransform.Microsoft.dropShadow(Color=";
+			if (css.drop_shadow_cor.value != "") filtro += css.drop_shadow_cor.value;
+			else {
+				filtro += "#999999";
+				css.drop_shadow_cor.value = "#999999";
+			}
+			if (css.drop_shadow_x.value != "") filtro += ",offX=" + css.drop_shadow_x.value;
+			else {
+				filtro += ",offX=5";
+				css.drop_shadow_x.value = "5";
+			}
+			if (css.drop_shadow_y.value != "") filtro += ",offY=" + css.drop_shadow_y.value;
+			else {
+				filtro += ",offY=5";
+				css.drop_shadow_y.value = "5";
+			}
+			if (css.drop_shadow_box.checked) filtro += ",positive=true";
+			else filtro += ",positive=false";
+			
+			teste.style.filter = filtro + ")";
+		}
+		function set_filter_croma(){
+			teste.style.filter = "progid:DXImageTransform.Microsoft.Chroma(Color=" + css.croma_cor.value + ")";
+		}
+			
+		function set_filter_blur(){
+			var filtro = "progid:DXImageTransform.Microsoft.Blur( PixelRadius=";
+			if (css.blur_pixel.value != ""){
+				filtro += css.blur_pixel.value + ",MakeShadow=";
+			}
+			else{
+				css.blur_pixel.value = "5";
+				filtro += "5" + ",MakeShadow=";
+			}
+			if (css.blur_box.checked){
+				filtro += "true,ShadowOpacity=";
+				if (css.blur_shadow.value != "") filtro += css.blur_shadow.value; 
+				else {
+					filtro += "1.00";
+					css.blur_shadow.value = "1.00";
+				}
+			}
+			else filtro += "false";
+			teste.style.filter = filtro + ")"
+		}
+		function set_filter_basicimage(){
+			var filtro = "progid:DXImageTransform.Microsoft.BasicImage(Rotation=";
+			if (css.basicimage_rotation.value == "") css.basicimage_rotation.value = "0";
+			
+			filtro += css.basicimage_rotation.value;
+			
+			if (css.basicimage_opacity.value != ""){
+				filtro += ",Opacity=" + css.basicimage_opacity.value;			
+			}
+			if (css.basicimage_espelho.checked){
+				filtro += ",Mirror=1";
+			}
+			else filtro += ",Mirror=0";
+			if (css.basicimage_inverter.checked){
+				filtro += ",Invert=1";
+			}
+			else filtro += ",Invert=0";
+			if (css.basicimage_raiox.checked){
+				filtro += ",XRay=1";
+			}
+			else filtro += ",XRay=0";
+			if (css.basicimage_cinza.checked){
+				filtro += ",Grayscale=1";
+			}
+			else filtro += ",Grayscale=0";
+			filtro += ")";
+			teste.style.filter = filtro;
+		}
+		function set_filter_alphaimageloader(){
+			var filtro;
+			if (css.imagemalfafiltro.value != ""){
+				filtro = "progid:DXImageTransform.Microsoft.AlphaImageLoader(src=";
+				filtro += css.imagemalfafiltro.value;
+				filtro += ",sizingmethod=" + css.alphaimageloader_type.value + ")";
+				teste.style.filter = filtro;
+			}	
+		}
+		function editafiltro(valor){
+			if (div_filtro != ""){
+				eval(div_filtro + ".style.visibility = 'hidden'");
+			}
+			switch(valor){ 
+				case ("Pixelate"):
+					filtro_pixel.style.visibility = "visible";
+					div_filtro = "filtro_pixel";
+					set_filter_pixel();
+					break;
+				case ("MotionBlur"):
+					filtro_motionblur.style.visibility = "visible";
+					div_filtro = "filtro_motionblur";
+					set_filter_motionblur();
+					break;
+				case ("Alpha"):
+					filtro_alpha.style.visibility = "visible";
+					div_filtro = "filtro_alpha";
+					set_filter_alpha();
+					break;
+				case (""):
+					teste.style.filter = "";
+					break;
+				case ("Glow"):
+					filtro_glow.style.visibility = "visible";
+					div_filtro = "filtro_glow";
+					set_filter_glow();
+					break;
+				case ("Engrave"):
+					teste.style.filter = "progid:DXImageTransform.Microsoft.Engrave()";
+					break;
+				case ("Emboss"):
+					teste.style.filter = "progid:DXImageTransform.Microsoft.Emboss()";
+					break;
+				case ("DropShadow"):
+					filtro_drop_shadow.style.visibility = "visible";
+					div_filtro = "filtro_drop_shadow";
+					set_filter_drop_shadow();
+					break;
+				case ("Gradient"):
+					filtro_gradient.style.visibility = "visible";
+					div_filtro = "filtro_gradient";
+					set_filter_gradient();
+					break;
+				case ("AlphaImageLoader"):
+					filtro_AlphaImageLoader.style.visibility = "visible";
+					div_filtro = "filtro_AlphaImageLoader";
+					set_filter_alphaimageloader
+					break;
+				case ("BasicImage"):
+					filtro_basicimage.style.visibility = "visible";
+					div_filtro = "filtro_basicimage";
+					set_filter_basicimage();
+					break;
+				case ("Blur"):
+					filtro_blur.style.visibility = "visible";
+					div_filtro = "filtro_blur";
+					set_filter_blur();
+					break;
+				case ("Chroma"):
+					filtro_croma.style.visibility = "visible";
+					div_filtro = "filtro_croma";
+					set_filter_croma();
+					break;
+			}
+		}
+		function set_filter_alpha(){
+			filtro = "Alpha(style=" + css.alpha_type.value + ",";
+			if (css.opacidade.value == ""){
+				filtro += "opacity=50";
+				css.opacidade.value = "50";
+			}
+			else{
+				filtro += "opacity=" + css.opacidade.value;
+				if (css.alpha_type.value == 1){
+					if (css.opacidadefinal.value != ""){
+						filtro += ",finishOpacity=" + css.opacidadefinal.value + ",";					
+					}
+					if (css.xinicial.value != ""){
+						filtro += ",startX=" + css.xinicial.value;
+					}
+					if (css.xfinal.value != ""){
+						filtro += ",finishX=" + css.xfinal.value;
+					}
+					if (css.yinicial.value != ""){
+						filtro += ",startY=" + css.yinicial.value;
+					}
+					if (css.yfinal.value != ""){
+						filtro += ",finishY=" + css.yfinal.value;
+					}
+				}
+			}
+			filtro += ")";
+			teste.style.filter = filtro;
+		}
+		
+		function selecionacor(what){
+			var win = window.open('selecionacores.html?what=' + what,'newWin','scrollbars=no,status=no,menubar=no, width=460, height=320');
+		}
+		function arq(oque){
+			var w = window.open('files.asp?dir=<%=local%>&oque=' + oque,'newWin');
+		}
+		function bgposition1(valor){
+			var ss = teste.style.backgroundPosition.split(" ");
+			if (valor != ''){
+				if (teste.style.backgroundPosition != "")
+					teste.style.backgroundPosition = valor + " " + ss[1];
+				else
+					teste.style.backgroundPosition = valor + " top";
+			}
+			else teste.style.backgroundPosition = "left " + ss[1];
+		}
+		function bgposition2(valor){
+			var ss = teste.style.backgroundPosition.split(" ");
+			if (valor != ''){
+				if (teste.style.backgroundPosition != "")
+					teste.style.backgroundPosition = ss[0] + " " + valor;
+				else
+					teste.style.backgroundPosition = valor;
+			}
+			else teste.style.backgroundPosition = ss[0] + " top";
+		}
+	</SCRIPT>
+</BODY></HTML>
